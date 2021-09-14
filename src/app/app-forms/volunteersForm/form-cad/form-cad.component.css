@@ -1,0 +1,92 @@
+/* CAMPOS DE VALIDAÇÃO DE FORMULÁRIO */
+
+/* CAMPOS DE VALIDAÇÃO DE FORMULÁRIO */
+
+.incorreto {
+  transition: 0.5s;
+  border: 0 none;
+  transition: 0.3s;
+  border-left: 5px solid rgb(128, 0, 0);
+}
+
+.correto:focus {
+  transition: 5s;
+  border: 0 none;
+  border-bottom: 2px solid green;
+  border-radius: 0;
+}
+#feminino,
+#masculino {
+  border: 1px solid rgb(197, 197, 197);
+}
+.text-formValid {
+  color: #ffffff;
+  background-color: #309365;
+  padding: 2px 6px 2px 6px;
+  border-radius: 5px;
+  font-size: medium;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+/* .text-formInvalid {
+  color: #dc3545;
+  font-size: medium;
+  text-overflow: ellipsis;
+} */
+
+.form-check-input,
+.form-check-label {
+  margin-left: 0px;
+}
+
+.form-switch label {
+  display: flex;
+  margin-left: 70px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+input,
+select {
+  min-width: 215px;
+}
+
+[type="radio"] {
+  min-width: 20px !important;
+  min-height: 20px !important;
+  margin-right: 15px;
+}
+[type="checkbox"] {
+  min-width: 40px;
+  min-height: 25px;
+}
+
+.labelText {
+  margin-top: -10px;
+  font-size:13px;
+  text-overflow: ellipsis !important;
+}
+.heightInput{
+  height: 70px;
+  padding-bottom: -10px;
+
+}
+
+label {
+  margin-left: 10px;
+}
+
+.is-validRadios {
+  border: 1px solid green;
+}
+
+.is-invalidRadios {
+  border: 1px solid red;
+}
+
+.forcedResponsiveness
+{
+  display: flex;
+  flex-wrap: wrap;
+}
