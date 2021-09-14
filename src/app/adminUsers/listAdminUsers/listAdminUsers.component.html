@@ -1,0 +1,41 @@
+<div class="container">
+
+  <form class=" row form-inline mt-4">
+      <input class="form-control mr-sm-2"
+      #termoDaPesquisa
+      type="search" placeholder="Pesquisar"
+
+      (keyup)="pesquisa(termoDaPesquisa.value)"
+      />
+
+  </form>
+  <hr>
+  <div class="flex-container">
+
+    <div *ngFor=" let item of administrators$ |async" >
+      <div class="card" style="width: 18rem;" >
+  
+           <ik-image [src]="item.urlsImage.urlImgAdmin" [transformation]="transformationImg" ></ik-image>
+
+
+        <div class="card-body" >
+          <hr>
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title fs-5">{{item.nome}}</h4>
+            <h5 class="badge bg-success">{{item.typeUser}}</h5>
+          </div>
+          <div class="fs-6"> Data de Cadastro {{item.dataCad}}</div>
+          <div *ngIf="item.dataNascimento != 'null'">
+            <h5  class="fs-6"> Data de Nascimento {{item.dataNascimento}}</h5>
+          </div>
+          <div *ngIf="item.email != 'null'">
+            <h5 class="fs-6"> Email {{item.email}}</h5>
+          </div>
+          
+          <!-- <h5 class="card-title">{{item.dataNascimento | dataIdade}} </h5> -->
+          <a [routerLink]="['/sideBar/myPageAdminUsers',item._id] " class="btn btn-success" >Detalhes</a>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
