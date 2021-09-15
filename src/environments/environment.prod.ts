@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
   AMBIENTE: 'production',
-  API: 'https://backend-seven-kappa.vercel.app/',
+  API: 'https://backend-seven-kappa.vercel.app',
+  
 
   PUBLICKEY: ' public_IbxahIOtljwWt0cQXY+fdYm0kYY=',
   PRIVATEKEY: 'private_NXH5tlpCiAYoPOzICzZvdk8US68=',
