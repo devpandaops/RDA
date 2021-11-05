@@ -45,5 +45,8 @@ transition: all 0.3s;
 transform: scale(1.1);
 }
 
-
+.transformationImg2{
+  height: 100px;
+  width: 100px;
+}
 

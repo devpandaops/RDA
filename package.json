@@ -24,13 +24,15 @@
     "imagekitio-angular": "^1.0.2",
     "jwt-decode": "^3.1.2",
     "ngx-mask": "^11.1.4",
+    "npm-check-updates": "^11.8.5",
+    "object-to-formdata": "^4.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.4",
-    "@angular/cli": "^12.1.4",
+    "@angular/cli": "^12.2.12",
     "@angular/compiler-cli": "~12.1.4",
     "@types/events": "^3.0.0",
     "@types/jasmine": "~3.6.0",

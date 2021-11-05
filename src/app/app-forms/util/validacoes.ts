@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 
 export class Validating {
-Error: any;   //#region static requiredFileTypeImg
+  Error: any;   //#region static requiredFileTypeImg
   static requiredFileTypeImg(
     controle: AbstractControl
   ): ValidationErrors | null {
@@ -119,6 +119,10 @@ Error: any;   //#region static requiredFileTypeImg
         'localDescanso',
         'typeLocalDescanso',
       ]);
+      const estaraDisponivel = controle.get([
+        'localDescanso',
+        'estaraDisponivel',
+      ]);
       const enderecoLocalDescanso = controle.get([
         'localDescanso',
         'enderecoLocalDescanso',
@@ -178,98 +182,175 @@ Error: any;   //#region static requiredFileTypeImg
         'ufLocalDescanso',
       ]);
 
-      const disponibilidadeDuranteAno = controle.get([
-        'localDescanso',
-        'disponibilidadeDuranteAno',
-      ]);
-      const mesesNaoDisponivel = controle.get([
-        'localDescanso',
-        'mesesNaoDisponivel',
-      ]);
-      const mesesNaoDisponivelDescrito = controle.get([
-        'localDescanso',
-        'mesesNaoDisponivelDescrito',
-      ]);
+
+
       const maximoDiariaPg = controle.get(['localDescanso', 'maximoDiariaPg']);
       const maximoHospedesPorVez = controle.get([
         'localDescanso',
         'maximoHospedesPorVez',
       ]);
       const qtFamiliaMes = controle.get(['localDescanso', 'qtFamiliaMes']);
-      const custoHospedagem = controle.get([
-        'localDescanso',
-        'custoHospedagem',
-      ]);
+      // const custoHospedagem = controle.get([
+      //   'localDescanso',
+      //   'custoHospedagem',
+      // ]);
       const valorHospedagem = controle.get([
         'localDescanso',
         'valorHospedagem',
       ]);
       const alimentacao = controle.get(['localDescanso', 'alimentacao']);
-      const custoAlimentacao = controle.get([
-        'localDescanso',
-        'custoAlimentacao',
-      ]);
-      const valorRefeicoes = controle.get(['localDescanso', 'valorRefeicoes']);
-      const roupaCama = controle.get(['localDescanso', 'roupaCama']);
+
+      // const valorRefeicoes = controle.get(['localDescanso', 'valorRefeicoes']);
       const qtQuartos = controle.get(['localDescanso', 'qtQuartos']);
       const qtSuites = controle.get(['localDescanso', 'qtSuites']);
       const qtCamasCasal = controle.get(['localDescanso', 'qtCamasCasal']);
       const qtCamasSolteiro = controle.get(['localDescanso', 'qtCamasSolteiro']);
 
-      const piscina = controle.get([
+      const quarto = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'piscina',
-      ]);
-      const quadra = controle.get([
+        'quarto'])
+      const roupaCama = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'quadra',
-      ]);
-      const restaurante = controle.get([
+        'quarto', 'roupaCama'])
+      const travesseiros = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'restaurante',
-      ]);
+        'quarto', 'travesseiros'])
+      const outrosQuarto = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'quarto', 'outrosQuarto'])
+
+      const cozinha = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha']);
+      const geladeira = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'geladeira'])
+      const fogao = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'fogao'])
+      const microOndas = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'microOndas'])
+      const mesaJantar = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'mesaJantar'])
+      const itensBasicos = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'itensBasicos'])
+      const utensiliosBasicos = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'utensiliosBasicos'])
+      const outrosCozinha = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'outrosCozinha'])
+
+      const banheiros = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros'])
+      const itensBasicosHigiene = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros', 'itensBasicosHigiene'])
+      const itensBasicosBeleza = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros', 'itensBasicosBeleza'])
+      const outrosBanheiro = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros', 'outrosBanheiro'])
+
+      const salaEstar = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'salaEstar'])
       const TV = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'TV',
-      ]);
+        'salaEstar', 'TV'])
       const internet = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'internet',
-      ]);
+        'salaEstar', 'internet'])
+      const sofa = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'salaEstar', 'sofa'])
+      const outrosSalaEstar = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'salaEstar', 'outrosSalaEstar'])
+
+      const areaExterna = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna'])
       const garagem = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'garagem',
-      ]);
+        'areaExterna', 'garagem'])
+      const piscina = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'piscina'])
+      const churasqueira = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'churasqueira'])
+      const quadra = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'quadra'])
+      const jogos = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'jogos'])
+      const restaurantes = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'restaurantes'])
+      const outrosareaExeterna = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'outrosareaExeterna'])
+
       const outrosServicosOferecidos = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'outrosServicosOferecidos',
-      ]);
-      // tslint:disable-next-line: max-line-length
+        'outrosServicosOferecidos'])
       const outrosServicosOferecidosDescrito = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'outrosServicosOferecidosDescrito',
-      ]);
+        'outrosServicosOferecidosDescrito'])
+
+
+
 
       // //#endregion
-     //#region IS REQUIRED   Validações obrigatorias chekbox4CasaDescanso === true
+      //#region IS REQUIRED   Validações obrigatorias chekbox4CasaDescanso === true
 
       //#region enderecoLocalDescanso
-//#region validação de imagens
+      //#region validação de imagens
       Validating.isRequiredIMG(imgFileCasaDescansoPrincipal);
       Validating.isRequiredIMG(imgsCasaDescansoFile);
-      if (id){
+      if (id) {
         Validating.cleanRequired(imgFileCasaDescansoPrincipal);
         Validating.cleanRequired(imgsCasaDescansoFile);
       }
-//#endregion
+      //#endregion
       Validating.isRequired(ruaLocalDescanso);
       Validating.isRequired(numeroLocalDescanso);
       Validating.isRequired(CEPLocalDescanso);
@@ -286,28 +367,10 @@ Error: any;   //#region static requiredFileTypeImg
 
       }
       //#endregion
-      //#region disponibilidadeDuranteAno
-      Validating.isRequired(disponibilidadeDuranteAno);
-      //#endregion
+
       //#region nomeLocalDescanso
       Validating.isRequired(nomeLocalDescanso);
-      //#endregion
-      //#region mesesNaoDisponivel
-      // tslint:disable-next-line: max-line-length
-      if (!disponibilidadeDuranteAno.value) {
-        Validating.isRequired(mesesNaoDisponivel);
-      } else {
-        Validating.cleanRequired(mesesNaoDisponivel);
-      }
-      //#endregion
-      //#region mesesNaoDisponivelDescrito
-      // tslint:disable-next-line: max-line-length
-      if (mesesNaoDisponivel.value === '0') {
-        Validating.isRequired(mesesNaoDisponivelDescrito);
-      } else {
-        Validating.cleanRequired(mesesNaoDisponivelDescrito);
-      }
-      //#endregion
+
       //#region maximoDiariaPg
       Validating.isRequired(maximoDiariaPg);
       //#endregion
@@ -318,35 +381,27 @@ Error: any;   //#region static requiredFileTypeImg
       Validating.isRequired(qtFamiliaMes);
       //#endregion
       //#region custoHospedagem
-      Validating.isRequired(custoHospedagem);
+      // Validating.isRequired(custoHospedagem);
       //#endregion
       //#region valorHospedagem
-      if (custoHospedagem.value) {
-        Validating.isRequired(valorHospedagem);
-      } else {
-        Validating.cleanRequired(valorHospedagem);
-      }
+      // if (custoHospedagem.value) {
+      //   Validating.isRequired(valorHospedagem);
+      // } else {
+      //   Validating.cleanRequired(valorHospedagem);
+      // }
       //#endregion
       //#region alimentacao
       Validating.isRequired(alimentacao);
       //#endregion
-      //#region custoAlimentacao
-      if (alimentacao.value) {
-        Validating.isRequired(custoAlimentacao);
-      } else {
-        Validating.cleanRequired(custoAlimentacao);
-      }
-      //#endregion
-      //#region valorRefeicoes
-      if (alimentacao.value) {
-        Validating.isRequired(valorRefeicoes);
-      } else {
-        Validating.cleanRequired(valorRefeicoes);
-      }
-      //#endregion
-      //#region roupaCama
-      Validating.isRequired(roupaCama);
-      //#endregion
+
+      // //#region valorRefeicoes
+      // if (alimentacao.value) {
+      //   Validating.isRequired(valorRefeicoes);
+      // } else {
+      //   Validating.cleanRequired(valorRefeicoes);
+      // }
+      // //#endregion
+
       //#region qtQuartos
       Validating.isRequired(qtQuartos);
       //#endregion
@@ -358,36 +413,10 @@ Error: any;   //#region static requiredFileTypeImg
       Validating.isRequired(qtCamasSolteiro);
       //#endregion
       //#region servicosDisponibilizados
-      Validating.isRequired(servicosDisponibilizados);
-
-      //#region piscina
-      Validating.isRequired(piscina);
-      //#endregion
-      //#region quadra
-      Validating.isRequired(quadra);
-      //#endregion
-      //#region restaurante
-      Validating.isRequired(restaurante);
-      //#endregion
-      //#region TV
-      Validating.isRequired(TV);
-      //#endregion
-      //#region internet
-      Validating.isRequired(internet);
-      //#endregion
-      //#region garagem
-      Validating.isRequired(garagem);
-      //#endregion
-      //#region outrosServicosOferecidos
-      Validating.isRequired(outrosServicosOferecidos);
+      // Validating.isRequired(servicosDisponibilizados);
       //#endregion
       //#region outrosServicosOferecidosDescrito
-      // tslint:disable-next-line: max-line-length
-      if (outrosServicosOferecidos.value) {
-        Validating.isRequired(outrosServicosOferecidosDescrito);
-      } else {
-        Validating.cleanRequired(outrosServicosOferecidosDescrito);
-      }
+
       //#endregion
       //#endregion
 
@@ -401,13 +430,23 @@ Error: any;   //#region static requiredFileTypeImg
         typeLocalDescanso.setErrors({ noneSelect: true });
       }
       //#endregion
+      //#region Controle grupo de  chekboxes tipo de local de descanso
+
+      // tslint:disable-next-line: no-shadowed-variable
+      // identifica se todos os chekboxes estão selecionados
+      if (Validating.haveASelected(estaraDisponivel.value)) {
+        estaraDisponivel.setErrors(null);
+      } else {
+        estaraDisponivel.setErrors({ noneSelect: true });
+      }
+      //#endregion
       //#region controle de chekboxes tipo de serviço
 
-      if (Validating.haveASelected(servicosDisponibilizados.value)) {
-        servicosDisponibilizados.setErrors(null);
-      } else {
-        servicosDisponibilizados.setErrors({ noneSelect: true });
-      }
+      // if (Validating.haveASelected(servicosDisponibilizados.value)) {
+      //   servicosDisponibilizados.setErrors(null);
+      // } else {
+      //   servicosDisponibilizados.setErrors({ noneSelect: true });
+      // }
       //#endregion
       //#endregion
     } else {
@@ -454,39 +493,25 @@ Error: any;   //#region static requiredFileTypeImg
         'CNPJLocalDescanso',
       ]);
 
-      const disponibilidadeDuranteAno = controle.get([
-        'localDescanso',
-        'disponibilidadeDuranteAno',
-      ]);
-      const mesesNaoDisponivel = controle.get([
-        'localDescanso',
-        'mesesNaoDisponivel',
-      ]);
-      const mesesNaoDisponivelDescrito = controle.get([
-        'localDescanso',
-        'mesesNaoDisponivelDescrito',
-      ]);
+
+
       const maximoDiariaPg = controle.get(['localDescanso', 'maximoDiariaPg']);
       const maximoHospedesPorVez = controle.get([
         'localDescanso',
         'maximoHospedesPorVez',
       ]);
       const qtFamiliaMes = controle.get(['localDescanso', 'qtFamiliaMes']);
-      const custoHospedagem = controle.get([
-        'localDescanso',
-        'custoHospedagem',
-      ]);
+      // const custoHospedagem = controle.get([
+      //   'localDescanso',
+      //   'custoHospedagem',
+      // ]);
       const valorHospedagem = controle.get([
         'localDescanso',
         'valorHospedagem',
       ]);
       const alimentacao = controle.get(['localDescanso', 'alimentacao']);
-      const custoAlimentacao = controle.get([
-        'localDescanso',
-        'custoAlimentacao',
-      ]);
-      const valorRefeicoes = controle.get(['localDescanso', 'valorRefeicoes']);
-      const roupaCama = controle.get(['localDescanso', 'roupaCama']);
+
+      // const valorRefeicoes = controle.get(['localDescanso', 'valorRefeicoes']);
       const qtQuartos = controle.get(['localDescanso', 'qtQuartos']);
       const qtSuites = controle.get(['localDescanso', 'qtSuites']);
       const qtCamasCasal = controle.get(['localDescanso', 'qtCamasCasal']);
@@ -495,47 +520,137 @@ Error: any;   //#region static requiredFileTypeImg
       const servicosDisponibilizados = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        ]);
-      const piscina = controle.get([
+      ]);
+      const quarto = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'piscina',
-      ]);
-      const quadra = controle.get([
+        'quarto'])
+      const roupaCama = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'quadra',
-      ]);
-      const restaurante = controle.get([
+        'quarto', 'roupaCama'])
+      const travesseiros = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'restaurante',
-      ]);
+        'quarto', 'travesseiros'])
+      const outrosQuarto = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'quarto', 'outrosQuarto'])
+
+      const cozinha = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha'])
+      const geladeira = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'geladeira'])
+      const fogao = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'fogao'])
+      const microOndas = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'microOndas'])
+      const mesaJantar = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'mesaJantar'])
+      const itensBasicos = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'itensBasicos'])
+      const utensiliosBasicos = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'utensiliosBasicos'])
+      const outrosCozinha = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'cozinha', 'outrosCozinha'])
+
+      const banheiros = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros'])
+      const itensBasicosHigiene = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros', 'itensBasicosHigiene'])
+      const itensBasicosBeleza = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros', 'itensBasicosBeleza'])
+      const outrosBanheiro = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'banheiros', 'outrosBanheiro'])
+
+      const salaEstar = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'salaEstar'])
       const TV = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'TV',
-      ]);
+        'salaEstar', 'TV'])
       const internet = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'internet',
-      ]);
+        'salaEstar', 'internet'])
+      const sofa = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'salaEstar', 'sofa'])
+      const outrosSalaEstar = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'salaEstar', 'outrosSalaEstar'])
+
+      const areaExterna = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna'])
       const garagem = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'garagem',
-      ]);
+        'areaExterna', 'garagem'])
+      const piscina = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'piscina'])
+      const churasqueira = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'churasqueira'])
+      const quadra = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'quadra'])
+      const jogos = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'jogos'])
+      const restaurantes = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'restaurantes'])
+      const outrosareaExeterna = controle.get([
+        'localDescanso',
+        'servicosDisponibilizados',
+        'areaExterna', 'outrosareaExeterna'])
+
       const outrosServicosOferecidos = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'outrosServicosOferecidos',
-      ]);
+        'outrosServicosOferecidos'])
       const outrosServicosOferecidosDescrito = controle.get([
         'localDescanso',
         'servicosDisponibilizados',
-        'outrosServicosOferecidosDescrito',
-      ]);
+        'outrosServicosOferecidosDescrito'])
+
       const typeLocalDescanso = controle.get([
         'localDescanso',
         'typeLocalDescanso',
@@ -566,15 +681,6 @@ Error: any;   //#region static requiredFileTypeImg
       Validating.cleanRequired(cidadeLocalDescanso);
       Validating.cleanRequired(ufLocalDescanso);
       //#endregion
-      //#region disponibilidadeDuranteAno
-      Validating.cleanRequired(disponibilidadeDuranteAno);
-      //#endregion
-      //#region mesesNaoDisponivel
-      Validating.cleanRequired(mesesNaoDisponivel);
-      //#endregion
-      //#region mesesNaoDisponivelDescrito
-      Validating.cleanRequired(mesesNaoDisponivelDescrito);
-      //#endregion
       //#region maximoDiariaPg
       Validating.cleanRequired(maximoDiariaPg);
       //#endregion
@@ -585,7 +691,7 @@ Error: any;   //#region static requiredFileTypeImg
       Validating.cleanRequired(qtFamiliaMes);
       //#endregion
       //#region custoHospedagem
-      Validating.cleanRequired(custoHospedagem);
+      // Validating.cleanRequired(custoHospedagem);
       //#endregion
       //#region valorHospedagem
       Validating.cleanRequired(valorHospedagem);
@@ -593,15 +699,11 @@ Error: any;   //#region static requiredFileTypeImg
       //#region alimentacao
       Validating.cleanRequired(alimentacao);
       //#endregion
-      //#region custoAlimentacao
-      Validating.cleanRequired(custoAlimentacao);
-      //#endregion
-      //#region valorRefeicoes
-      Validating.cleanRequired(valorRefeicoes);
-      //#endregion
-      //#region roupaCama
-      Validating.cleanRequired(roupaCama);
-      //#endregion
+
+      // //#region valorRefeicoes
+      // Validating.cleanRequired(valorRefeicoes);
+      // //#endregion
+
       //#region qtQuartos
       Validating.cleanRequired(qtQuartos);
       //#endregion
@@ -613,33 +715,10 @@ Error: any;   //#region static requiredFileTypeImg
       Validating.cleanRequired(qtCamasSolteiro);
       //#endregion
       //#region servicosDisponibilizados
-      Validating.cleanRequired(servicosDisponibilizados);
+      // Validating.cleanRequired(servicosDisponibilizados);
       //#endregion
 
-      //#region piscina
-      Validating.cleanRequired(piscina);
-      //#endregion
-      //#region quadra
-      Validating.cleanRequired(quadra);
-      //#endregion
-      //#region restaurante
-      Validating.cleanRequired(restaurante);
-      //#endregion
-      //#region TV
-      Validating.cleanRequired(TV);
-      //#endregion
-      //#region internet
-      Validating.cleanRequired(internet);
-      //#endregion
-      //#region garagem
-      Validating.cleanRequired(garagem);
-      //#endregion
-      //#region outrosServicosOferecidos
-      Validating.cleanRequired(outrosServicosOferecidos);
-      //#endregion
-      //#region outrosServicosOferecidosDescrito
-      Validating.cleanRequired(outrosServicosOferecidosDescrito);
-      //#endregion CELAN REQUIRED
+
       //#endregion
       //#endregion static conditionallyRequired
     }
@@ -655,8 +734,8 @@ Error: any;   //#region static requiredFileTypeImg
   }
   static isRequiredIMG(field): void {
     const validators: ValidatorFn[] = !!field.validator
-    ? [field.validator, Validators.required]
-    : [Validators.required];
+      ? [field.validator, Validators.required]
+      : [Validators.required];
 
     field.setValidators(validators);
     field.updateValueAndValidity({ onlySelf: true });

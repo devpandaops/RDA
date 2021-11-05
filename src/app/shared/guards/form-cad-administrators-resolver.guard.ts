@@ -8,12 +8,13 @@ import {
 import { Observable, of } from 'rxjs';
 import { AdministratorModel } from '../entities/administrator.model';
 import { VolunteersService } from '../../adminUsers/volunteers/services/volunteers.service';
+import { AdminService } from 'src/app/adminUsers/admin.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormCadAdministratorsResolverGuard implements Resolve<AdministratorModel> {
-  constructor(private userSevice: VolunteersService) {}
+  constructor(private userSevice: AdminService) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -23,7 +24,7 @@ export class FormCadAdministratorsResolverGuard implements Resolve<Administrator
     console.log(idAdministrator);
 
     if (route.params && idAdministrator) {
-      return this.userSevice.getVolunteersPorId(idAdministrator);
+      return this.userSevice.getAdminPorId(idAdministrator);
     }
 
     return of({

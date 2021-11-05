@@ -23,7 +23,7 @@ export class AdminService {
     return this.http.get<AdministratorModel[]>(`${this.API}`).pipe(take(1));
   }
   // Busca os dados do administrador pelo seu ID
-  public getVolunteersPorId(id: string): Observable<AdministratorModel> {
+  public getAdminPorId(id: string): Observable<AdministratorModel> {
     return this.http.get<AdministratorModel>(`${this.API}/${id}`).pipe(take(1));
   }
   // CAMPO DE BUSCA na tela principal (precisa de ajuste)

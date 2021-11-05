@@ -38,15 +38,15 @@ export class FormCadComponent implements OnInit, OnChanges {
   brandRadiosValidator: boolean = undefined;
   brandRadiosValidatorLocalDescanso: boolean = undefined;
   inputPasswordValidity: any;
-  disponibilidadeAno = 'O local estará disponível durante todo o ano?';
+
   // custoHospedagem: string = 'Não, o local será disponibilizado gratuitamente';
   varCustoHospedagem = 'Haverá algum custo de hospedagem?';
-  comercioAlimetacao = 'O local providencia algum tipo de alimentação?';
+
   custoAlimetacao = 'haverá algum custo de alimentação?';
 
 
   isCasaDescanso: boolean;
-  disponibilidadeRoupaCama = 'O local disponibilizará roupa de cama e banho?';
+
   imgFilePrincipalHaveFile: boolean;
   imgFileCasaDescansoPrincipalHaveFile: boolean;
   imgsCasaDescansoFileHaveFile: boolean;
@@ -63,44 +63,10 @@ export class FormCadComponent implements OnInit, OnChanges {
   }
 
   setMensagem(field: string): void {
-    if (field === 'roupaCama') {
-      this.disponibilidadeRoupaCama = this.roupaCama.value === true ? 'Sim, O local disponibilizará roupa de cama e banho. ' : 'Não, O local não disponibilizará roupa de cama e banho.';
-    }
-    if (field === 'disponibilidadeDuranteAno') {
-      this.disponibilidadeAno =
-        this.formulario.value.localDescanso.disponibilidadeDuranteAno === true
-          ? ' Sim, o local estará disponível durante todo o ano'
-          : 'Não, o local não estará disponível durante todo o ano';
-      if (this.formulario.value.localDescanso.disponibilidadeDuranteAno) {
-        this.formulario
-          .get(['localDescanso', 'mesesNaoDisponivel'])
-          .setValue('');
-        this.formulario
-          .get(['localDescanso', 'mesesNaoDisponivelDescrito'])
-          .setValue('');
-      }
-    }
-    if (field === 'custoHospedagem') {
-      this.varCustoHospedagem =
-        this.formulario.value.localDescanso.custoHospedagem === false
-          ? 'Não, o local será disponibilizado gratuitamente'
-          : 'Sim, o Missionário terá custos de Hospedagem';
-      if (!this.formulario.value.localDescanso.custoHospedagem) {
-        this.formulario.get(['localDescanso', 'valorHospedagem']).setValue('');
-      }
-    }
-    if (field === 'alimentacao') {
-      this.comercioAlimetacao =
-        this.formulario.value.localDescanso.alimentacao === true
-          ? 'Sim, o local Comercializa alimentos'
-          : 'Não, o local não Comercializa alimentos';
-    }
-    if (field === 'custoAlimentacao') {
-      this.custoAlimetacao =
-        this.formulario.value.localDescanso.custoAlimentacao === true
-          ? 'Sim, Será cobrado o que for consumido'
-          : 'Não, para este hóspede não haverão custos de alimentação';
-    }
+
+
+
+
   }
 
   public toggle(view?: string): void {
@@ -123,7 +89,8 @@ export class FormCadComponent implements OnInit, OnChanges {
             Validators.maxLength(100),
           ],
         ],
-        dataNascimento: [this.Voluntary.dataNascimento, [Validators.required]],
+        CPF: [this.Voluntary.CPF],
+        dataNascimento: [this.Voluntary.dataNascimento,/* [Validators.required]*/],
         sexo: [this.Voluntary.sexo, [Validators.required]],
 
         endereco: this.formBuilder.group({
@@ -144,8 +111,8 @@ export class FormCadComponent implements OnInit, OnChanges {
         email: [this.Voluntary.email, [Validators.required, Validators.email]],
         password: [null],
         password2: [null],
-        nomeIg: [this.Voluntary.nomeIg, [Validators.required]],
-        pastor: [this.Voluntary.pastor, [Validators.required]],
+        nomeIg: [this.Voluntary.nomeIg, /*[Validators.required]*/],
+        pastor: [this.Voluntary.pastor, /*[Validators.required]*/],
 
         typeVoluntary: this.formBuilder.group({
           chekbox1Profissao: [this.Voluntary.typeVoluntary.chekbox1Profissao],
@@ -213,13 +180,15 @@ export class FormCadComponent implements OnInit, OnChanges {
                 .ufLocalDescanso,
             ],
           }),
-          disponibilidadeDuranteAno: [
-            this.Voluntary.localDescanso.disponibilidadeDuranteAno,
-          ], // switch
-          mesesNaoDisponivel: [this.Voluntary.localDescanso.mesesNaoDisponivel],
-          mesesNaoDisponivelDescrito: [
-            this.Voluntary.localDescanso.mesesNaoDisponivelDescrito,
-          ], // tentar criar um select que possa selecionar mais de um ítem
+
+          estaraDisponivel: this.formBuilder.group({
+            duranteTodoAno: [this.Voluntary.localDescanso.estaraDisponivel.duranteTodoAno],
+            exetoFinaisDeSemana: [this.Voluntary.localDescanso.estaraDisponivel.exetoFinaisDeSemana],
+            exetoFeriadosProlongadosComemorativos: [this.Voluntary.localDescanso.estaraDisponivel.exetoFeriadosProlongadosComemorativos],
+            baixaTemporada: [this.Voluntary.localDescanso.estaraDisponivel.baixaTemporada],
+            outrasDisponibilidades: [this.Voluntary.localDescanso.estaraDisponivel.outrasDisponibilidades],
+            outrasDisponibilidadesDescrito: [this.Voluntary.localDescanso.estaraDisponivel.outrasDisponibilidadesDescrito]
+          }),
           maximoDiariaPg: [this.Voluntary.localDescanso.maximoDiariaPg], // tipo moeda
           maximoHospedesPorVez: [
             this.Voluntary.localDescanso.maximoHospedesPorVez,
@@ -228,38 +197,79 @@ export class FormCadComponent implements OnInit, OnChanges {
           custoHospedagem: [this.Voluntary.localDescanso.custoHospedagem], // switch
           valorHospedagem: [this.Voluntary.localDescanso.valorHospedagem], // if custoHospedagem
           alimentacao: [this.Voluntary.localDescanso.alimentacao], // switch
-          custoAlimentacao: [this.Voluntary.localDescanso.custoAlimentacao], // if alimentacao //switch
+
           valorRefeicoes: [this.Voluntary.localDescanso.valorRefeicoes], // if alimentacao
-          roupaCama: [this.Voluntary.localDescanso.roupaCama], // switch
           qtQuartos: [this.Voluntary.localDescanso.qtQuartos], // number
           qtSuites: [this.Voluntary.localDescanso.qtSuites], // number
           qtCamasCasal: [this.Voluntary.localDescanso.qtCamasCasal], // number
           qtCamasSolteiro: [this.Voluntary.localDescanso.qtCamasSolteiro], // number
+          camaDescrito: [this.Voluntary.localDescanso.camaDescrito], // number
           servicosDisponibilizados: this.formBuilder.group({
+
+            quarto: this.formBuilder.group({
+              roupaCama: [this.Voluntary.localDescanso.servicosDisponibilizados.quarto.roupaCama],
+              travesseiros: [this.Voluntary.localDescanso.servicosDisponibilizados.quarto.travesseiros],
+              outrosQuarto: [this.Voluntary.localDescanso.servicosDisponibilizados.quarto.outrosQuarto],
+            }),
+            cozinha: this.formBuilder.group({
+              geladeira: [this.Voluntary.localDescanso.servicosDisponibilizados.cozinha.geladeira],
+              fogao: [this.Voluntary.localDescanso.servicosDisponibilizados.cozinha.fogao],
+              microOndas: [this.Voluntary.localDescanso.servicosDisponibilizados.cozinha.microOndas],
+              mesaJantar: [this.Voluntary.localDescanso.servicosDisponibilizados.cozinha.mesaJantar],
+              itensBasicos: [this.Voluntary.localDescanso.servicosDisponibilizados.cozinha.itensBasicos],
+              utensiliosBasicos: [this.Voluntary.localDescanso.servicosDisponibilizados.cozinha.utensiliosBasicos],
+              outrosCozinha: [this.Voluntary.localDescanso.servicosDisponibilizados.cozinha.outrosCozinha],
+            }),
+            banheiros: this.formBuilder.group({
+              roupaBanho: [this.Voluntary.localDescanso.servicosDisponibilizados.banheiros.roupaBanho],
+              itensBasicosHigiene: [this.Voluntary.localDescanso.servicosDisponibilizados.banheiros.itensBasicosHigiene],
+              itensBasicosBeleza: [this.Voluntary.localDescanso.servicosDisponibilizados.banheiros.itensBasicosBeleza],
+              outrosBanheiro: [this.Voluntary.localDescanso.servicosDisponibilizados.banheiros.outrosBanheiro],
+            }),
+            salaEstar: this.formBuilder.group({
+              TV: [this.Voluntary.localDescanso.servicosDisponibilizados.salaEstar.TV],
+              internet: [this.Voluntary.localDescanso.servicosDisponibilizados.salaEstar.internet],
+              sofa: [this.Voluntary.localDescanso.servicosDisponibilizados.salaEstar.sofa],
+              outrosSalaEstar: [this.Voluntary.localDescanso.servicosDisponibilizados.salaEstar.outrosSalaEstar],
+            }),
+            areaExterna: this.formBuilder.group({
+              garagem: [this.Voluntary.localDescanso.servicosDisponibilizados.areaExterna.garagem],
+              piscina: [this.Voluntary.localDescanso.servicosDisponibilizados.areaExterna.piscina],
+              churasqueira: [this.Voluntary.localDescanso.servicosDisponibilizados.areaExterna.churasqueira],
+              quadra: [this.Voluntary.localDescanso.servicosDisponibilizados.areaExterna.quadra],
+              jogos: [this.Voluntary.localDescanso.servicosDisponibilizados.areaExterna.jogos],
+              restaurantes: [this.Voluntary.localDescanso.servicosDisponibilizados.areaExterna.restaurantes],
+              outrosareaExeterna: [this.Voluntary.localDescanso.servicosDisponibilizados.areaExterna.outrosareaExeterna],
+            }),
+            outrosServicosOferecidos: [this.Voluntary.localDescanso.servicosDisponibilizados.outrosServicosOferecidos],
+            outrosServicosOferecidosDescrito: [this.Voluntary.localDescanso.servicosDisponibilizados.outrosServicosOferecidosDescrito]
+
+
+
             // todos switch
-            piscina: [
-              this.Voluntary.localDescanso.servicosDisponibilizados.piscina,
-            ],
-            quadra: [
-              this.Voluntary.localDescanso.servicosDisponibilizados.quadra,
-            ],
-            restaurante: [
-              this.Voluntary.localDescanso.servicosDisponibilizados.restaurante,
-            ],
-            TV: [this.Voluntary.localDescanso.servicosDisponibilizados.TV],
-            internet: [
-              this.Voluntary.localDescanso.servicosDisponibilizados.internet,
-            ],
-            garagem: [
-              this.Voluntary.localDescanso.servicosDisponibilizados.garagem,
-            ],
-            outrosServicosOferecidos: [
-              this.Voluntary.localDescanso.servicosDisponibilizados.outrosServicosOferecidos,
-            ],
-            outrosServicosOferecidosDescrito: [
-              this.Voluntary.localDescanso.servicosDisponibilizados
-                .outrosServicosOferecidos,
-            ], // if outros
+            // piscina: [
+            //   this.Voluntary.localDescanso.servicosDisponibilizados.piscina,
+            // ],
+            // quadra: [
+            //   this.Voluntary.localDescanso.servicosDisponibilizados.quadra,
+            // ],
+            // restaurante: [
+            //   this.Voluntary.localDescanso.servicosDisponibilizados.restaurante,
+            // ],
+            // TV: [this.Voluntary.localDescanso.servicosDisponibilizados.TV],
+            // internet: [
+            //   this.Voluntary.localDescanso.servicosDisponibilizados.internet,
+            // ],
+            // garagem: [
+            //   this.Voluntary.localDescanso.servicosDisponibilizados.garagem,
+            // ],
+            // outrosServicosOferecidos: [
+            //   this.Voluntary.localDescanso.servicosDisponibilizados.outrosServicosOferecidos,
+            // ],
+            // outrosServicosOferecidosDescrito: [
+            //   this.Voluntary.localDescanso.servicosDisponibilizados
+            //     .outrosServicosOferecidos,
+            // ], // if outros
           }),
         }),
       },
@@ -364,13 +374,8 @@ export class FormCadComponent implements OnInit, OnChanges {
     //          'RO'
     //         ],
     //       }),
-    //       disponibilidadeDuranteAno: [
-    //        true,
-    //       ], // switch
-    //       mesesNaoDisponivel: ['7'],
-    //       mesesNaoDisponivelDescrito: [
-    //         this.Voluntary.localDescanso.mesesNaoDisponivelDescrito,
-    //       ], // tentar criar um select que possa selecionar mais de um ítem
+
+
     //       maximoDiariaPg: ['11561'], // tipo moeda
     //       maximoHospedesPorVez: [
     //         '10',
@@ -379,9 +384,8 @@ export class FormCadComponent implements OnInit, OnChanges {
     //       custoHospedagem: [true], // switch
     //       valorHospedagem: ['500'], // if custoHospedagem
     //       alimentacao: [true], // switch
-    //       custoAlimentacao: ['150'], // if alimentacao //switch
+    //    
     //       valorRefeicoes: ['90'], // if alimentacao
-    //       roupaCama: [true], // switch
     //       qtQuartos: ['10'], // number
     //       qtSuites: ['8'], // number
     //       qtCamas: ['20'], // number
@@ -420,8 +424,9 @@ export class FormCadComponent implements OnInit, OnChanges {
     //     ],
     //   } as AbstractControlOptions
     // );
-    console.log(this.formulario.controls);
-    console.log(this.imgFilePrincipal);
+    // console.log(this.formulario.controls);
+    // console.log(this.imgFilePrincipal);
+    // console.log(this.Voluntary.CPF)
   }
 
   async onSubmit(): Promise<void> {
@@ -527,7 +532,7 @@ export class FormCadComponent implements OnInit, OnChanges {
             'Por algum motivo os dados não puderam ser salvos'
           );
           console.error(
-            `Os dados do ${this.Voluntary.nome} não puderam ser salvos: => Relatório: ${error}`
+            `Os dados do ${this.Voluntary.nome} não puderam ser salvos: => Relatório: ${JSON.stringify(error)}`
           );
         }
       );
@@ -564,6 +569,7 @@ export class FormCadComponent implements OnInit, OnChanges {
   onFileSelect(event, field: string): void {
     if (event.target.files.length > 0) {
       const file = event.target.files as File;
+   
       this.formulario.get(field).setValue(file);
       this.imgFilePrincipalHaveFile = field === 'imgFilePrincipal' ? true : undefined;
       this.imgFileCasaDescansoPrincipalHaveFile = field === 'imgFileCasaDescansoPrincipal' ? true : undefined;
@@ -875,15 +881,53 @@ export class FormCadComponent implements OnInit, OnChanges {
       'ufLocalDescanso',
     ]);
   }
-  get disponibilidadeDuranteAno(): AbstractControl {
-    return this.formulario.get(['localDescanso', 'disponibilidadeDuranteAno']);
+  get estaraDisponivel(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'estaraDisponivel']);
   }
-  get mesesNaoDisponivel(): AbstractControl {
-    return this.formulario.get(['localDescanso', 'mesesNaoDisponivel']);
+  get duranteTodoAno(): AbstractControl {
+    return this.formulario.get([
+      'localDescanso',
+      'estaraDisponivel',
+      'duranteTodoAno',
+    ]);
   }
-  get mesesNaoDisponivelDescrito(): AbstractControl {
-    return this.formulario.get(['localDescanso', 'mesesNaoDisponivelDescrito']);
+  get exetoFinaisDeSemana(): AbstractControl {
+    return this.formulario.get([
+      'localDescanso',
+      'estaraDisponivel',
+      'exetoFinaisDeSemana',
+    ]);
   }
+  get exetoFeriadosProlongadosComemorativos(): AbstractControl {
+    return this.formulario.get([
+      'localDescanso',
+      'estaraDisponivel',
+      'exetoFeriadosProlongadosComemorativos',
+    ]);
+  }
+  get baixaTemporada(): AbstractControl {
+    return this.formulario.get([
+      'localDescanso',
+      'estaraDisponivel',
+      'baixaTemporada',
+    ]);
+  }
+  get outrasDisponibilidades(): AbstractControl {
+    return this.formulario.get([
+      'localDescanso',
+      'estaraDisponivel',
+      'outrasDisponibilidades',
+    ]);
+  }
+  get outrasDisponibilidadesDescrito(): AbstractControl {
+    return this.formulario.get([
+      'localDescanso',
+      'estaraDisponivel',
+      'outrasDisponibilidadesDescrito',
+    ]);
+  }
+
+
   get maximoDiariaPg(): AbstractControl {
     return this.formulario.get(['localDescanso', 'maximoDiariaPg']);
   }
@@ -902,15 +946,11 @@ export class FormCadComponent implements OnInit, OnChanges {
   get alimentacao(): AbstractControl {
     return this.formulario.get(['localDescanso', 'alimentacao']);
   }
-  get custoAlimentacao(): AbstractControl {
-    return this.formulario.get(['localDescanso', 'custoAlimentacao']);
-  }
+
   get valorRefeicoes(): AbstractControl {
     return this.formulario.get(['localDescanso', 'valorRefeicoes']);
   }
-  get roupaCama(): AbstractControl {
-    return this.formulario.get(['localDescanso', 'roupaCama']);
-  }
+
   get qtQuartos(): AbstractControl {
     return this.formulario.get(['localDescanso', 'qtQuartos']);
   }
@@ -926,60 +966,106 @@ export class FormCadComponent implements OnInit, OnChanges {
   get servicosDisponibilizados(): AbstractControl {
     return this.formulario.get(['localDescanso', 'servicosDisponibilizados']);
   }
-  get piscina(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'piscina',
-    ]);
+  get quarto(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'quarto']);
   }
-  get quadra(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'quadra',
-    ]);
+  get roupaCama(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'quarto', 'roupaCama']);
   }
-  get restaurante(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'restaurante',
-    ]);
+  get travesseiros(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'quarto', 'travesseiros']);
+  }
+  get outrosQuarto(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'quarto', 'outrosQuarto']);
+  }
+
+  get cozinha(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha']);
+  }
+  get geladeira(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha', 'geladeira']);
+  }
+  get fogao(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha', 'fogao']);
+  }
+  get microOndas(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha', 'microOndas']);
+  }
+  get mesaJantar(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha', 'mesaJantar']);
+  }
+  get itensBasicos(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha', 'itensBasicos']);
+  }
+  get utensiliosBasicos(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha', 'utensiliosBasicos']);
+  }
+  get outrosCozinha(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'cozinha', 'outrosCozinha']);
+  }
+
+  get banheiros(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'banheiros']);
+  }
+  get roupaBanho(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'banheiros', 'roupaBanho']);
+  }
+  get itensBasicosHigiene(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'banheiros', 'itensBasicosHigiene']);
+  }
+  get itensBasicosBeleza(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'banheiros', 'itensBasicosBeleza']);
+  }
+  get outrosBanheiro(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'banheiros', 'outrosBanheiro']);
+  }
+
+  get salaEstar(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'salaEstar']);
   }
   get TV(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'TV',
-    ]);
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'salaEstar', 'TV']);
   }
   get internet(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'internet',
-    ]);
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'salaEstar', 'internet']);
+  }
+  get sofa(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'salaEstar', 'sofa']);
+  }
+  get outrosSalaEstar(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'salaEstar', 'outrosSalaEstar']);
+  }
+
+  get areaExterna(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna']);
   }
   get garagem(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'garagem',
-    ]);
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna', 'garagem']);
   }
+  get piscina(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna', 'piscina']);
+  }
+  get churasqueira(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna', 'churasqueira']);
+  }
+  get quadra(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna', 'quadra']);
+  }
+  get jogos(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna', 'jogos']);
+  }
+  get restaurantes(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna', 'restaurantes']);
+  }
+  get outrosareaExeterna(): AbstractControl {
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'areaExterna', 'outrosareaExeterna']);
+  }
+
   get outrosServicosOferecidos(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'outrosServicosOferecidos',
-    ]);
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'outrosServicosOferecidos']);
   }
   get outrosServicosOferecidosDescrito(): AbstractControl {
-    return this.formulario.get([
-      'localDescanso',
-      'servicosDisponibilizados',
-      'outrosServicosOferecidosDescrito',
-    ]);
+    return this.formulario.get(['localDescanso', 'servicosDisponibilizados', 'outrosServicosOferecidosDescrito']);
   }
+
 }

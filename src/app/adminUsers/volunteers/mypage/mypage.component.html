@@ -13,7 +13,9 @@
             </div>
             <div class="dadosCabec d-flex flex-column flex-wrap FontResponsive">
               <h1 class="ml-4 FontResponsive">{{ Voluntary.nome }}</h1>
-              <h3 class="ml-4 FontResponsive" >{{ Voluntary.dataNascimento | dataIdade }}</h3>
+              <div *ngIf="Voluntary.dataNascimento != null">
+                <h3 class="ml-4 FontResponsive" >{{ Voluntary.dataNascimento | dataIdade }}</h3>
+              </div>
               <div class="dadosHeader2 d-flex ml-4 mb-n4">
                 <small class="text-white ml-3 infoCacec">
                    {{ Voluntary.profissao }},

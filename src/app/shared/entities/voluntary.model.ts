@@ -2,6 +2,7 @@ export interface VoluntaryModel {
   _id: string;
   typeUser: string;
   nome: string;
+  CPF: string;
   dataNascimento: string;
   sexo: string;
   endereco: {
@@ -25,14 +26,12 @@ export interface VoluntaryModel {
   imgFileCasaDescansoPrincipal: File;
   nomeIg: string;
   pastor: string;
-
   typeVoluntary: {
     chekbox1Profissao: boolean;
     chekbox2Intercessor: boolean;
     chekbox3Cuidador: boolean;
     chekbox4CasaDescanso: boolean;
   };
-
   chekbox5Aconselhamento: boolean;
   especialidade: string;
   urlsImage: {
@@ -62,29 +61,62 @@ export interface VoluntaryModel {
       cidadeLocalDescanso: string;
       ufLocalDescanso: string;
     };
-    disponibilidadeDuranteAno: boolean;
-    mesesNaoDisponivel: string;
-    mesesNaoDisponivelDescrito: string;
+    estaraDisponivel: {
+      duranteTodoAno: boolean;
+      exetoFinaisDeSemana: boolean;
+      exetoFeriadosProlongadosComemorativos: boolean;
+      baixaTemporada: boolean;
+      outrasDisponibilidades: boolean;
+      outrasDisponibilidadesDescrito: string;
+    };
     maximoDiariaPg: string;
     maximoHospedesPorVez: string;
     qtFamiliaMes: string;
     custoHospedagem: string;
     valorHospedagem: string;
     alimentacao: boolean;
-    custoAlimentacao: string;
     valorRefeicoes: string;
-    roupaCama: boolean;
     qtQuartos: string;
     qtSuites: string;
     qtCamasCasal: string;
     qtCamasSolteiro: string;
+    camaDescrito: string;
     servicosDisponibilizados: {
-      piscina: boolean;
-      quadra: boolean;
-      restaurante: boolean;
-      TV: boolean;
-      internet: boolean;
-      garagem: boolean;
+      quarto: {
+        roupaCama: boolean;
+        travesseiros: boolean;
+        outrosQuarto: string;
+      };
+      cozinha: {
+        geladeira: boolean;
+        fogao: boolean;
+        microOndas: boolean;
+        mesaJantar:boolean;
+        itensBasicos:boolean;
+        utensiliosBasicos:boolean;
+        outrosCozinha:string;
+      };
+      banheiros:{
+        roupaBanho:boolean;
+        itensBasicosHigiene:boolean;
+        itensBasicosBeleza:boolean;
+        outrosBanheiro:string;
+      };
+      salaEstar:{
+        TV: boolean;
+        internet: boolean;
+        sofa:boolean;
+        outrosSalaEstar:string;
+      };
+      areaExterna:{
+        garagem: boolean;
+        piscina: boolean;
+        churasqueira:boolean;
+        quadra: boolean;
+        jogos:boolean;
+        restaurantes: boolean;
+        outrosareaExeterna:string;
+      };
       outrosServicosOferecidos: boolean;
       outrosServicosOferecidosDescrito: string;
     };

@@ -47,7 +47,7 @@ export class VolunteersService {
         toFormData(voluntary)
       )
       .pipe(retry(2), catchError(this.handleError))
-      .pipe(take(1))
+      .pipe(take(1));
   }
 
   // Atualiza um voluntário
@@ -76,12 +76,14 @@ export class VolunteersService {
     let errorMessage = {};
     if (error.error instanceof ErrorEvent) {
       // Erro ocorreu no lado do client
-      Object.assign(errorMessage, { ErroMensagem: error.error.message })
+      Object.assign(errorMessage, { ErroMensagem: error.error.message });
+      console.log(errorMessage);
+      
 
     } else {
       // Erro ocorreu no lado do servidor
-      Object.assign(errorMessage, { StatusCode: error.status })
-          //  `Código do erro: ${error.status}, ` + `mensagem: ${error.message}`;
+      Object.assign(errorMessage, { StatusCode: error.status });
+      console.log(`Código do erro: ${error.status}, ` + `mensagem: ${error.message}`);
     }
 
 
