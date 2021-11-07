@@ -153,7 +153,7 @@ export class FormCadAdminUsersComponent implements OnInit {
     this.formulario.controls.dataCad.setValue(dataCad);
   }
   addingStatusToAdministrators(): void {
-    const administrators = 'ACTIVE';
+    const administrators = 'ATIVO';
     this.formulario.controls.status.setValue(administrators);
   }
 // adicina a imagem ao formulario

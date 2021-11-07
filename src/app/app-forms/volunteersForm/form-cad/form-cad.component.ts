@@ -588,7 +588,7 @@ export class FormCadComponent implements OnInit, OnChanges {
     this.formulario.controls.dataCad.setValue(dataCad);
   }
   addingStatusToVolunteer(): void {
-    const VoluntaryActive = 'ACTIVE';
+    const VoluntaryActive = 'ATIVO';
     this.formulario.controls.status.setValue(VoluntaryActive);
   }
 

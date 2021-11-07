@@ -34,4 +34,11 @@ export class MypageComponent implements OnInit {
 
   }
 
+  updateStatusVoluntary():void {
+// falta implementar a função que chama a requisição
+// falta implementar a requisição o service 
+// tem que termnar o bakend
+// precisa dar um commit antes de continuar 
+  }
+
 }
