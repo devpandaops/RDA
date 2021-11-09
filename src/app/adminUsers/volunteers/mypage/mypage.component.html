@@ -1,4 +1,11 @@
 <div class="container shadow p-3 mb-5 bg-white rounded">
+  
+  <div [@torrada]="alertState" class="alert">
+    <div [ngClass]="typeStyle()" class="borderAlert"></div>
+    <p id="text"></p>
+    <button (click)="toggle('hide')" class="closebtn">x</button>
+  </div>
+  
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <p>Detalhes do Voluntário</p>
@@ -9,7 +16,7 @@
           'btn-secondary': Voluntary.status != 'ATIVO'
         }"
         class="btn btn-primary btn-sm position-relative "
-        
+        (click)="updateStatusVoluntaryCTRL()"
       >
         {{ Voluntary.status }}
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark "> Novo
@@ -199,7 +206,7 @@
             type="submit"
             class="btn btn-success btn-lg"
             [routerLink]="['/sideBar/formCadVoluntary', Voluntary._id]"
-            (click)="updateStatusVoluntary()"
+            
           >
             Atualizar
           </button>

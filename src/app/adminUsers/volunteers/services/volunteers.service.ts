@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, retry, take } from 'rxjs/operators';
+import { catchError, map, retry, retryWhen, take } from 'rxjs/operators';
 import { toFormData } from 'src/app/app-forms/fileUpload/toFormData';
 import { VoluntaryModel } from 'src/app/shared/entities/voluntary.model';
 import { environment } from '../../../../environments/environment';
@@ -59,6 +59,13 @@ export class VolunteersService {
         `${this.API}/${voluntary._id}`,
         toFormData(voluntary)
       )
+      .pipe(retry(2), catchError(this.handleError))
+      .pipe(take(1));
+  }
+  public updateStatusVolunteer(
+    id:string, status:string
+  ): Observable<any> {
+    return this.http.put(`${this.API}/status/${id}?status=${status}`, status)
       .pipe(retry(2), catchError(this.handleError))
       .pipe(take(1));
   }
