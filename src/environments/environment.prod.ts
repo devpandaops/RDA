@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   AMBIENTE: 'production',
-  API: 'https://backend-six-topaz.vercel.app',
+  API: 'https://cim-bakend.herokuapp.com',
   
 
   PUBLICKEY: ' public_IbxahIOtljwWt0cQXY+fdYm0kYY=',
