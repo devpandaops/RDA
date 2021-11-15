@@ -41,6 +41,11 @@ import { PublicPageModule } from './public-page/public-page.module';
     LoginComponent,
   ],
   imports: [
+    ImagekitioAngularModule.forRoot({
+      publicKey: environment.PUBLICKEY,
+      urlEndpoint: environment.URL_ENDPOINT,
+      authenticationEndpoint: environment.authenticationEndpoint
+    }),
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AdminUsersModule,
     AppFormsModule,

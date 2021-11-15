@@ -59,9 +59,12 @@
 
           </div>
           <div class="col">
-            <div class="d-flex w-100 justify-content-between ">
+            <div class="d-flex w-100 justify-content-between align-items-center ">
               <h5 class="mb-1">{{item.localDescanso.nomeLocalDescanso}}</h5>
               <small>{{item.dataCad}}</small>
+              <span
+              [ngClass]="{'bg-success': item.status == 'ATIVO', 'bg-secondary': item.status != 'ATIVO' }" 
+              class="badge">{{item.status}}</span>
             </div>
             <p class="mb-1"> {{item.localDescanso.enderecoLocalDescanso.cidadeLocalDescanso}} -
               {{item.localDescanso.enderecoLocalDescanso.ufLocalDescanso}}</p>
