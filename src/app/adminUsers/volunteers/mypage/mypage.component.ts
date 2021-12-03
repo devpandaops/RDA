@@ -33,7 +33,7 @@ export class MypageComponent implements OnInit {
     
     ngOnInit(): void {
       this.Voluntary = this.route.snapshot.data['voluntary'];
-      console.log('o que vem do guard', this.Voluntary);
+      // console.log('o que vem do guard', this.Voluntary);
       this.slides = this.Voluntary.urlsImage.urlImgsCasaDescanso;
    
     }

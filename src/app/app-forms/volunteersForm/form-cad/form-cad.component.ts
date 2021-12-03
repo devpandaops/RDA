@@ -8,6 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { stringify } from 'querystring';
 import { VolunteersService } from 'src/app/adminUsers/volunteers/services/volunteers.service';
 import { VoluntaryModel } from '../../../shared/entities/voluntary.model';
 import { FormValidationControl } from '../../services/form-validation-control.service';
@@ -50,6 +51,7 @@ export class FormCadComponent implements OnInit, OnChanges {
   imgFilePrincipalHaveFile: boolean;
   imgFileCasaDescansoPrincipalHaveFile: boolean;
   imgsCasaDescansoFileHaveFile: boolean;
+  dadoCarregado: boolean = true 
 
   constructor(
     private voluntaryService: VolunteersService,
@@ -244,32 +246,6 @@ export class FormCadComponent implements OnInit, OnChanges {
             outrosServicosOferecidos: [this.Voluntary.localDescanso.servicosDisponibilizados.outrosServicosOferecidos],
             outrosServicosOferecidosDescrito: [this.Voluntary.localDescanso.servicosDisponibilizados.outrosServicosOferecidosDescrito]
 
-
-
-            // todos switch
-            // piscina: [
-            //   this.Voluntary.localDescanso.servicosDisponibilizados.piscina,
-            // ],
-            // quadra: [
-            //   this.Voluntary.localDescanso.servicosDisponibilizados.quadra,
-            // ],
-            // restaurante: [
-            //   this.Voluntary.localDescanso.servicosDisponibilizados.restaurante,
-            // ],
-            // TV: [this.Voluntary.localDescanso.servicosDisponibilizados.TV],
-            // internet: [
-            //   this.Voluntary.localDescanso.servicosDisponibilizados.internet,
-            // ],
-            // garagem: [
-            //   this.Voluntary.localDescanso.servicosDisponibilizados.garagem,
-            // ],
-            // outrosServicosOferecidos: [
-            //   this.Voluntary.localDescanso.servicosDisponibilizados.outrosServicosOferecidos,
-            // ],
-            // outrosServicosOferecidosDescrito: [
-            //   this.Voluntary.localDescanso.servicosDisponibilizados
-            //     .outrosServicosOferecidos,
-            // ], // if outros
           }),
         }),
       },
@@ -280,154 +256,7 @@ export class FormCadComponent implements OnInit, OnChanges {
         ],
       } as AbstractControlOptions
     );
-    // this.formulario = this.formBuilder.group(
-    //   {
-    //     _id: this.Voluntary._id,
-    //     nome: [
-    //       'TESTE FORMULARIO',
-    //       [
-    //         Validators.required,
-    //         Validators.minLength(3),
-    //         Validators.maxLength(100),
-    //       ],
-    //     ],
-    //     dataNascimento: ['10111995', [Validators.required]],
-    //     sexo: ['M', [Validators.required]],
-
-    //     endereco: this.formBuilder.group({
-    //       rua: ['RUA TESTE'],
-    //       numero: ['TESTE'],
-    //       bairro: ['321'],
-    //       cidade: [ 'Cidade testes'],
-    //       complemento: ['perto da conclusão'],
-    //       uf: ['RO'],
-    //       CEP: ['03122010'],
-    //     }),
-
-    //     profissao: ['profissão teste', [Validators.required]],
-    //     telefone: ['021988734469', [Validators.required]],
-    //     telefoneFx: ['021988734469'],
-    //     EstadoCivil: ['solteiro'],
-    //     imgFilePrincipal: [null, [Validating.requiredFileTypeImg]],
-    //     email: ['teste@teste', [Validators.required, Validators.email]],
-    //     password: ['321321321'],
-    //     password2: ['321321321'],
-    //     nomeIg: ['teste', [Validators.required]],
-    //     pastor: ['teste', [Validators.required]],
-
-    //     typeVoluntary: this.formBuilder.group({
-    //       chekbox1Profissao: [true],
-    //       chekbox2Intercessor: [
-    //         this.Voluntary.typeVoluntary.chekbox2Intercessor,
-    //       ],
-    //       chekbox3Cuidador: [this.Voluntary.typeVoluntary.chekbox3Cuidador],
-    //       chekbox4CasaDescanso: [
-    //         true,
-    //       ],
-    //     }),
-
-    //     chekbox5Aconselhamento: [this.Voluntary.chekbox5Aconselhamento],
-    //     especialidade: ['this.Voluntary.especialidade'],
-    //     servicoOferecido: ['this.Voluntary.servicoOferecido'],
-    //     imgsCasaDescansoFile: [null, [Validating.requiredFileTypeImg]],
-    //     // imgsCasaDescansoFile: [null,  this.isCasaDescanso? Validators.required, requiredFileTypeImg():''],
-    //     imgFileCasaDescansoPrincipal: [null, [Validating.requiredFileTypeImg]],
-    //     // imgFileCasaDescansoPrincipal: [null,  this.isCasaDescanso? [Validators.required, requiredFileTypeImg()]: ''],
-    //     dataCad: [this.Voluntary.dataCad],
-    //     status: [this.Voluntary.status],
-
-    //     localDescanso: this.formBuilder.group({
-    //       typeLocalDescanso: this.formBuilder.group({
-    //         casaDePraia: [
-    //           this.Voluntary.localDescanso.typeLocalDescanso.casaDePraia,
-    //         ],
-    //         casaDeCampo: [
-    //           true,
-    //         ],
-    //         pousada: [true],
-    //         hotel: [this.Voluntary.localDescanso.typeLocalDescanso.hotel],
-    //         outros: [this.Voluntary.localDescanso.typeLocalDescanso.outros],
-    //       }),
-
-    //       nomeLocalDescanso: ['this.Voluntary.localDescanso.nomeLocalDescanso'],
-    //       CNPJLocalDescanso: ['101522336'],
-    //       enderecoLocalDescanso: this.formBuilder.group({
-    //         ruaLocalDescanso: [
-    //           'rua teste'
-    //         ],
-    //         numeroLocalDescanso: [
-    //           '32165161'
-    //         ],
-    //         complementoLocalDescanso: [
-    //          'complemento'
-    //         ],
-    //         CEPLocalDescanso: [
-    //           '321351651321516'
-    //         ],
-    //         bairroLocalDescanso: [
-    //           'teste'
-    //         ],
-    //         cidadeLocalDescanso: [
-    //           'teste'
-    //         ],
-    //         ufLocalDescanso: [
-    //          'RO'
-    //         ],
-    //       }),
-
-
-    //       maximoDiariaPg: ['11561'], // tipo moeda
-    //       maximoHospedesPorVez: [
-    //         '10',
-    //       ], // number
-    //       qtFamiliaMes: ['10'], // number
-    //       custoHospedagem: [true], // switch
-    //       valorHospedagem: ['500'], // if custoHospedagem
-    //       alimentacao: [true], // switch
-    //    
-    //       valorRefeicoes: ['90'], // if alimentacao
-    //       qtQuartos: ['10'], // number
-    //       qtSuites: ['8'], // number
-    //       qtCamas: ['20'], // number
-    //       servicosDisponibilizados: this.formBuilder.group({
-    //         // todos switch
-    //         piscina: [
-    //           true,
-    //         ],
-    //         quadra: [
-    //           true
-    //         ],
-    //         restaurante: [
-    //           true
-    //         ],
-    //         TV: [this.Voluntary.localDescanso.servicosDisponibilizados.TV],
-    //         internet: [
-    //           this.Voluntary.localDescanso.servicosDisponibilizados.internet,
-    //         ],
-    //         garagem: [
-    //           true
-    //         ],
-    //         outrosServicosOferecidos: [
-    //           this.Voluntary.localDescanso.servicosDisponibilizados.outros,
-    //         ],
-    //         outrosServicosOferecidosDescrito: [
-    //           this.Voluntary.localDescanso.servicosDisponibilizados
-    //             .outrosServicosOferecidos,
-    //         ], // if outros
-    //       }),
-    //     }),
-    //   },
-    //   {
-    //     validator: [
-    //       Validating.conditionallyRequired,
-    //       Validating.equalPasswords,
-    //     ],
-    //   } as AbstractControlOptions
-    // );
-    // console.log(this.formulario.controls);
-    // console.log(this.imgFilePrincipal);
-    // console.log(this.Voluntary.CPF)
-  }
+     }
 
   async onSubmit(): Promise<void> {
     this.cleanValidationsIFLocalDescanso(); // limpa validações se local descanso false
@@ -475,9 +304,10 @@ export class FormCadComponent implements OnInit, OnChanges {
   // atualiza os dados dos voluntarios
 
   public UpdateVoluntaryCTRL(VoluntaryDataFormUpdated: VoluntaryModel): void {
-
-    this.voluntaryService.updateVolunteerID(VoluntaryDataFormUpdated).subscribe(
-      (voluntary) => {
+    this.dadoCarregado= false
+    this.voluntaryService.updateVolunteerID(VoluntaryDataFormUpdated).subscribe({
+      next:(voluntary) => {
+        this.dadoCarregado= true
         this.activAlert(
           'success',
           `Os dados do ${this.formulario.value.nome} foram alterados com sucesso`
@@ -487,10 +317,11 @@ export class FormCadComponent implements OnInit, OnChanges {
           `Os dados do ${this.Voluntary.nome} foram alterados com sucesso`
         );
       },
-      (error) => {
-        console.log('Console do Erro', error);
-
-        if (error.StatusCode === 413) {
+      error:(error) => {
+        this.dadoCarregado= true
+        console.log('Console do Erro',JSON.stringify(error));
+        console.log(error.StatusCode)
+        if (error.StatusCode == 413) {
           this.activAlert(
             'danger',
             `Os dados do ${this.formulario.value.nome} não puderam ser alterados :: ALGUMAS DAS IMAGENS ENVIADAS ESTÁ  EXCEDENDO O TAMANHO PERMITIDO, REVEJA `
@@ -506,16 +337,18 @@ export class FormCadComponent implements OnInit, OnChanges {
         console.error(
           `Os dados do ${this.Voluntary.nome} não puderam ser alterados: => Relatório: ${error}`
         );
-      }
+      }}
     );
   }
   public salveVoluntaryCTRL(): void {
+    this.dadoCarregado= false
     if (this.formulario !== undefined) {
       this.settingRegistrationDate();
       this.addingStatusToVolunteer();
-
-      this.voluntaryService.saveVolunteer(this.formulario.value).subscribe(
-        (voluntary) => {
+      this.voluntaryService.saveVolunteer(this.formulario.value)
+      .subscribe({
+        next:(voluntary) => {
+          this.dadoCarregado= true
           this.activAlert(
             'success',
             `os dados de ${this.formulario.value.nome} foram cadastrados com sucesso!`
@@ -526,15 +359,27 @@ export class FormCadComponent implements OnInit, OnChanges {
           this.formulario.reset(); // reseta formulário
           this.resetImg();
         },
-        (error) => {
+        error: (error) => {   
+        this.dadoCarregado= true
+        console.log('Console do Erro',JSON.stringify(error));
+        console.log(error.StatusCode)
+        if (error.StatusCode == 413) {
           this.activAlert(
             'danger',
-            'Por algum motivo os dados não puderam ser salvos'
-          );
-          console.error(
-            `Os dados do ${this.Voluntary.nome} não puderam ser salvos: => Relatório: ${JSON.stringify(error)}`
+            `Os dados do ${this.formulario.value.nome} não puderam ser alterados :: ALGUMAS DAS IMAGENS ENVIADAS ESTÁ  EXCEDENDO O TAMANHO PERMITIDO, REVEJA `
           );
         }
+        if (error.StatusCode === 400) {
+          this.activAlert(
+            'danger',
+            `Os dados do ${this.formulario.value.nome} não puderam ser alterados :: VOCÊ ESTÁ ADICIONANDO QUANTIDADE DE IMAGENS MAIOR DO QUE APERMITIDA, REVEJA `
+          );
+        }
+
+        console.error(
+          `Os dados do ${this.Voluntary.nome} não puderam ser alterados: => Relatório: ${error}`
+        );
+      }}
       );
     }
   }

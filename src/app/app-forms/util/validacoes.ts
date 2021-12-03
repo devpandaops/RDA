@@ -32,7 +32,7 @@ export class Validating {
       [].slice
         .call(fileField)
         .forEach((element: { size: number }, index: string | number) => {
-          if (element.size > 350000) {
+          if (element.size > 17301504) {
             // se or arquivo tiver tamamnho maior que 350kb a variavel validationExtensions recebe true, se não recebe false
             Validationsize[index] = false;
           } else {

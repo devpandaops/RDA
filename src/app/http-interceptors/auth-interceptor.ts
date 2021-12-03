@@ -33,13 +33,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      // Erro do cliete-sede ou da rede
       console.error(
         `Código do erro :: ${error.status}, ` +
           `Erro: ${JSON.stringify(error.error)}`
       );
     }
     // retornar um observable com uma mensagem amigável
-    return throwError(`Usuário ou senha incorretos, tente novamente`);
+    return throwError(() => new Error('Usuário ou senha incorretos, tente novamente'));
   }
 }

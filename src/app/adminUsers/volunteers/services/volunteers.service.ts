@@ -39,14 +39,19 @@ export class VolunteersService {
   };
 
   // CADASTRO VOLUNTÁRIOS
-  public saveVolunteer(voluntary: VoluntaryModel): Observable<VoluntaryModel> {
+  public saveVolunteer(voluntary: VoluntaryModel): Observable<any> {
 
     return this.http
       .post<VoluntaryModel>(
         `${this.API}`,
         toFormData(voluntary)
       )
-      .pipe(retry(2), catchError(this.handleError))
+      .pipe(retry(2), 
+      catchError((err) => {
+        console.log(err)
+        return err
+      })
+      )
       .pipe(take(1));
   }
 
@@ -59,14 +64,18 @@ export class VolunteersService {
         `${this.API}/${voluntary._id}`,
         toFormData(voluntary)
       )
-      .pipe(retry(2), catchError(this.handleError))
+      .pipe(retry(2), 
+      // catchError(error => this.handleError(error))
+      )
       .pipe(take(1));
   }
   public updateStatusVolunteer(
     id:string, status:string
   ): Observable<any> {
     return this.http.put(`${this.API}/status/${id}?status=${status}`, status)
-      .pipe(retry(2), catchError(this.handleError))
+      .pipe(retry(2),
+      //  catchError(error => this.handleError(error))
+      )
       .pipe(take(1));
   }
 
@@ -74,26 +83,28 @@ export class VolunteersService {
   public deleteVolunteer(voluntary: VoluntaryModel) {
     return this.http
       .delete<VoluntaryModel>(`${this.API}/${voluntary._id}`, this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError))
+      .pipe(retry(1), 
+      // catchError(error => this.handleError(error))
+      )
       .pipe(take(1));
   }
 
   // Manipulação de erros
-  public handleError(error: HttpErrorResponse) {
-    let errorMessage = {};
-    if (error.error instanceof ErrorEvent) {
-      // Erro ocorreu no lado do client
-      Object.assign(errorMessage, { ErroMensagem: error.error.message });
-      console.log(errorMessage);
+  // public handleError(error: HttpErrorResponse) {
+  //   let errorMessage = {};
+  //   if (error.error instanceof ErrorEvent) {
+  //     // Erro ocorreu no lado do client
+  //     Object.assign(errorMessage, { ErroMensagem: error.error.message });
+  //     console.log(errorMessage);
       
 
-    } else {
-      // Erro ocorreu no lado do servidor
-      Object.assign(errorMessage, { StatusCode: error.status });
-      console.log(`Código do erro: ${error.status}, ` + `mensagem: ${error.message}`);
-    }
+  //   } else {
+  //     // Erro ocorreu no lado do servidor
+  //     Object.assign(errorMessage, { StatusCode: error.status });
+  //     console.log(`Código do erro: ${error.status}, ` + `mensagem: ${JSON.stringify(error.message)}`);
+  //   }
 
 
-    return throwError(errorMessage);
-  }
+  //   return throwError(errorMessage);
+  // }
 }
