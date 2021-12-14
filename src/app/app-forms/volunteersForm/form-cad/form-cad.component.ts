@@ -25,6 +25,10 @@ import { AlertService } from './../../../shared/services/alert.service';
   animations: [alertAnimation],
 })
 export class FormCadComponent implements OnInit, OnChanges {
+
+  // Variávei de controle 
+  servicoOferecidoOutrosControl:boolean = false;
+
   alertState = 'hide';
 
   public Voluntary: VoluntaryModel;
@@ -39,12 +43,6 @@ export class FormCadComponent implements OnInit, OnChanges {
   brandRadiosValidator: boolean = undefined;
   brandRadiosValidatorLocalDescanso: boolean = undefined;
   inputPasswordValidity: any;
-
-  // custoHospedagem: string = 'Não, o local será disponibilizado gratuitamente';
-  varCustoHospedagem = 'Haverá algum custo de hospedagem?';
-
-  custoAlimetacao = 'haverá algum custo de alimentação?';
-
 
   isCasaDescanso: boolean;
 
@@ -64,16 +62,11 @@ export class FormCadComponent implements OnInit, OnChanges {
 
   }
 
-  setMensagem(field: string): void {
-
-
-
-
-  }
 
   public toggle(view?: string): void {
     this.alertState = this.alertService.toggle(view);
   }
+
 
   ngOnInit(): void {
     this.Voluntary = this.route.snapshot.data.voluntary; // recebe os dados capturados do guard e guarda na variável voluntary
@@ -128,8 +121,23 @@ export class FormCadComponent implements OnInit, OnChanges {
         }),
 
         chekbox5Aconselhamento: [this.Voluntary.chekbox5Aconselhamento],
-        especialidade: [this.Voluntary.especialidade],
-        servicoOferecido: [this.Voluntary.servicoOferecido],
+          aconselhamentoBiblico: this.formBuilder.group({
+          seuMinistrioNaIgreja:[this.Voluntary.aconselhamentoBiblico.seuMinistrioNaIgreja],
+          cursoAconselhamentoBiblico:[this.Voluntary.aconselhamentoBiblico.cursoAconselhamentoBiblico],
+          ondeCursou:[this.Voluntary.aconselhamentoBiblico.ondeCursou ],
+          anoDeConclusaoCurso:[this.Voluntary.aconselhamentoBiblico.anoDeConclusaoCurso],
+          experienciaAconselhamentoBiblico:[this.Voluntary.aconselhamentoBiblico.experienciaAconselhamentoBiblico],
+        }),
+        voluntarioProfissao: this.formBuilder.group({
+          especialidade: [this.Voluntary.voluntarioProfissao.especialidade],
+          dicasEspecialidade: [this.Voluntary.voluntarioProfissao.dicasEspecialidade],
+          servicoOferecido: [this.Voluntary.voluntarioProfissao.servicoOferecido],
+          servicoOferecidoOutros: [this.Voluntary.voluntarioProfissao.servicoOferecidoOutros],
+        }),
+        voluntarioIntercessor: this.formBuilder.group({
+          ministerioNaIgreja: [this.Voluntary.voluntarioIntercessor.ministerioNaIgreja],
+          habilidadesWhatsapp: [this.Voluntary.voluntarioIntercessor.habilidadesWhatsapp],
+        }),
         imgsCasaDescansoFile: [null, [Validating.requiredFileTypeImg]],
         // imgsCasaDescansoFile: [null,  this.isCasaDescanso? Validators.required, requiredFileTypeImg():''],
         imgFileCasaDescansoPrincipal: [null, [Validating.requiredFileTypeImg]],
@@ -256,7 +264,9 @@ export class FormCadComponent implements OnInit, OnChanges {
         ],
       } as AbstractControlOptions
     );
+
      }
+
 
   async onSubmit(): Promise<void> {
     this.cleanValidationsIFLocalDescanso(); // limpa validações se local descanso false
@@ -509,10 +519,12 @@ export class FormCadComponent implements OnInit, OnChanges {
       Validating.cleanRequired(this.imgFileCasaDescansoPrincipal);
       Validating.cleanRequired(this.enderecoLocalDescanso);
       Validating.cleanRequired(this.localDescanso);
+      Validating.cleanRequired(this.estaraDisponivel);
     }
   }
   cleanValidationsIF_id(): void {
     if (this.Voluntary._id) {
+      Validating.cleanRequired(this.localDescanso);
       Validating.cleanRequired(this.localDescanso);
       Validating.cleanRequired(this.servicosDisponibilizados);
       Validating.cleanRequired(this.imgsCasaDescansoFile);
@@ -611,11 +623,44 @@ export class FormCadComponent implements OnInit, OnChanges {
   get chekbox5Aconselhamento(): AbstractControl {
     return this.formulario.get('chekbox5Aconselhamento');
   }
+  get aconselhamentoBiblico(): AbstractControl {
+    return this.formulario.get('aconselhamentoBiblico');
+  }
+  get seuMinistrioNaIgreja(): AbstractControl {
+    return this.formulario.get(['aconselhamentoBiblico', 'seuMinistrioNaIgreja']);
+  }
+  get cursoAconselhamentoBiblico(): AbstractControl {
+    return this.formulario.get(['aconselhamentoBiblico', 'cursoAconselhamentoBiblico']);
+  }
+  get ondeCursou(): AbstractControl {
+    return this.formulario.get(['aconselhamentoBiblico', 'ondeCursou']);
+  }
+  get anoDeConclusaoCurso(): AbstractControl {
+    return this.formulario.get(['aconselhamentoBiblico', 'anoDeConclusaoCurso']);
+  }
+  get experienciaAconselhamentoBiblico(): AbstractControl {
+    return this.formulario.get(['aconselhamentoBiblico', 'experienciaAconselhamentoBiblico']);
+  }
+  get voluntarioProfissao(): AbstractControl {
+    return this.formulario.get('voluntarioProfissao');
+  }
   get especialidade(): AbstractControl {
-    return this.formulario.get('especialidade');
+    return this.formulario.get(['voluntarioProfissao', 'especialidade']);
+  }
+  get dicasEspecialidade(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'dicasEspecialidade']);
   }
   get servicoOferecido(): AbstractControl {
-    return this.formulario.get('servicoOferecido');
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido']);
+  }
+  get voluntarioIntercessor(): AbstractControl {
+    return this.formulario.get('voluntarioIntercessor');
+  }
+  get ministerioNaIgreja(): AbstractControl {
+    return this.formulario.get(['voluntarioIntercessor', 'ministerioNaIgreja']);
+  }
+  get habilidadesWhatsapp(): AbstractControl {
+    return this.formulario.get(['voluntarioIntercessor', 'habilidadesWhatsapp']);
   }
   get imgsCasaDescansoFile(): AbstractControl {
     return this.formulario.get('imgsCasaDescansoFile');

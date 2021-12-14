@@ -183,6 +183,15 @@ section:hover {
   .width-auto-responsive{
     margin: 0 15px 0 15px;
   }
+  .input-height-bigger{
+    height: 100px;
+  }
+  .labelText-responsive{
+    height: 50px;
+    margin-top: -5px;
+    font-size: small;
+    text-overflow: ellipsis !important;
+  }
 }
 
 @media (max-width: 987px) {
