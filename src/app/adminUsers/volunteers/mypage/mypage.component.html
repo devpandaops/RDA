@@ -1,11 +1,10 @@
 <div class="container shadow p-3 mb-5 bg-white rounded">
-  
   <div [@torrada]="alertState" class="alert">
     <div [ngClass]="typeStyle()" class="borderAlert"></div>
     <p id="text"></p>
     <button (click)="toggle('hide')" class="closebtn">x</button>
   </div>
-  
+
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <p>Detalhes do Voluntário</p>
@@ -15,11 +14,22 @@
           'btn-success': Voluntary.status == 'ATIVO',
           'btn-secondary': Voluntary.status != 'ATIVO'
         }"
-        class="btn btn-primary btn-sm position-relative "
+        class="btn btn-primary btn-sm position-relative"
         (click)="updateStatusVoluntaryCTRL()"
       >
         {{ Voluntary.status }}
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark "> Novo
+        <span
+          class="
+            position-absolute
+            top-0
+            start-100
+            translate-middle
+            badge
+            rounded-pill
+            bg-dark
+          "
+        >
+          Novo
           <span class="visually-hidden">New alerts</span>
         </span>
       </button>
@@ -48,14 +58,19 @@
               cabecalhoMyPage
             "
           >
-            <div *ngIf="Voluntary" class="divImg">
-              <ik-image
+            <!-- <div *ngIf="Voluntary" class="divImg"> -->
+            <!-- <ik-image
                 style="height: 50% !important"
                 class="img-fluid imgPrincipal"
                 [src]="Voluntary.urlsImage.urlImgPrincipal"
                 [transformation]="transformationImg"
-              ></ik-image>
-            </div>
+              ></ik-image> -->
+            <img
+              [src]="Voluntary.urlsImage.urlImgPrincipal"
+              class="img-fluid imgPrincipal"
+              alt=""
+            />
+            <!-- </div> -->
             <div class="dadosCabec d-flex flex-column flex-wrap FontResponsive">
               <h1 class="ml-4 FontResponsive">{{ Voluntary.nome }}</h1>
 
@@ -151,8 +166,13 @@
               <div class="d-flex w-100 justify-content-between">
                 <h4 class="mb-1">Outras Informações</h4>
               </div>
-              
-              <p *ngIf="Voluntary.voluntarioProfissao.especialidade" class="mb-1">Atua como: {{ Voluntary.voluntarioProfissao.especialidade }}</p>
+
+              <p
+                *ngIf="Voluntary.voluntarioProfissao.especialidade"
+                class="mb-1"
+              >
+                Atua como: {{ Voluntary.voluntarioProfissao.especialidade }}
+              </p>
               <p class="mb-1" style="word-break: break-all">
                 Email: {{ Voluntary.email }}
               </p>
@@ -199,7 +219,50 @@
             *ngIf="Voluntary.urlsImage.urlImgsCasaDescanso.length > 0"
             class="carousel"
           >
-            <app-carousel [slides]="slides"></app-carousel>
+            <!-- Button trigger modal -->
+
+            <div
+              class="d-flex justify-content-center align-items-center"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              <img
+                [src]="Voluntary.urlsImage.urlImgCasaDescansoPrincipal"
+                style="max-height: 400px; max-width: 400px;"
+                class="d-block w-100"
+                alt=""
+              />
+            </div>
+        
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body" *ngIf="slides[1]">
+
+                    <app-carousel [slides]="slides"></app-carousel>
+                  </div>
+                  <div class="modal-body d-flex justify-content-center align-items-center" *ngIf="!slides[1]">
+
+                    <h1> humm! =/ .inda não foram adicionadas imagens aqui </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="button mb-5 mt-5 d-flex justify-content-end">
@@ -207,7 +270,6 @@
             type="submit"
             class="btn btn-success btn-lg"
             [routerLink]="['/sideBar/formCadVoluntary', Voluntary._id]"
-            
           >
             Atualizar
           </button>

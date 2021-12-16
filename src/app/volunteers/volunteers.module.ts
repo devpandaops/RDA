@@ -6,16 +6,16 @@ import { PipesModule } from '../shared/pipes/pipes.module';
 import { NgModule } from '@angular/core';
 
 import { VolunteersService } from '../adminUsers/volunteers/services/volunteers.service';
-import { ImagekitioAngularModule } from 'imagekitio-angular';
+// import { ImagekitioAngularModule } from 'imagekitio-angular';
 import { environment } from 'src/environments/environment';
 import { HomePageVoluntaryComponent } from './home-page-voluntary/home-page-voluntary.component';
 
 @NgModule({
   imports: [CommonModule,
-    ImagekitioAngularModule.forRoot({
-      publicKey: environment.PUBLICKEY,
-      urlEndpoint: environment.URL_ENDPOINT,
-    }),
+    // ImagekitioAngularModule.forRoot({
+    //   publicKey: environment.PUBLICKEY,
+    //   urlEndpoint: environment.URL_ENDPOINT,
+    // }),
      RouterModule, 
      PipesModule, 
      VolunteersRoutingModule, 

@@ -19,8 +19,8 @@ export class MypageComponent implements OnInit {
   public Voluntary: VoluntaryModel;
   public idVoluntary: number;
   img: any;
-  transformationImg = [{ height: '221', width: '400' }];
-  transformationImgCasaDescanso = [{ height: '400', width: '500' }];
+  // transformationImg = [{ height: '221', width: '400' }]; 
+  // transformationImgCasaDescanso = [{ height: '400', width: '500' }];
   alertState = 'hide';
   labelStatus:string;
   slides = [];

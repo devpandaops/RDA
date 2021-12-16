@@ -9,8 +9,8 @@ export class CarouselComponent implements OnInit {
 
 
   @Input() slides;
-  // currentSlide = 0;
-  transformationImgCasaDescanso = [{ height: '450', width: '1000' }];
+  currentSlide = 0;
+  transformationImgCasaDescanso = [{ height: '1000', width: '1000' }];
   constructor() {}
 
   // onPreviousClick() {

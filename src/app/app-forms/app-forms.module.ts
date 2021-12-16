@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { PipesModule } from '../shared/pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ImagekitioAngularModule } from 'imagekitio-angular';
+// import { ImagekitioAngularModule } from 'imagekitio-angular';
 
 import { FormCadMissionariesComponent } from './missionariesForm/formCadMissionaries/formCadMissionaries.component';
 import { FiltrosComponent } from './volunteersForm/filtros/filtros.component';
@@ -21,10 +21,10 @@ import { AdminService } from '../adminUsers/admin.service';
     ReactiveFormsModule,
     AppRoutingModule,
     PipesModule,
-    ImagekitioAngularModule.forRoot({
-      publicKey: environment.PUBLICKEY,
-      urlEndpoint: environment.URL_ENDPOINT,
-    }),
+    // ImagekitioAngularModule.forRoot({
+    //   publicKey: environment.PUBLICKEY,
+    //   urlEndpoint: environment.URL_ENDPOINT,
+    // }),
     NgxMaskModule.forChild(),
   ],
 

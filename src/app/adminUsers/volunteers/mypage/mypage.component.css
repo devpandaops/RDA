@@ -14,8 +14,8 @@ img {
 }
 
 .imgPrincipal {
-  max-width: 100%;
-  height: auto;
+max-width: 200px;
+max-height: 200px;
 }
 
 .divImg {
@@ -37,6 +37,8 @@ img {
   width: 100%;
   padding: 2em;
 } */
+
+
 @media (max-width: 540px) {
   .carousel{
     max-width: 300px;
@@ -47,6 +49,8 @@ img {
     padding: 0 !important;
     margin: 0 !important;
     margin-bottom: 1rem !important;
+    max-width: 150px;
+    max-height: 150px;
   }
   .FontResponsive{
     font-size: medium;
