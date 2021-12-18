@@ -8,7 +8,7 @@
     </div> -->
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000" *ngFor="let slide of slides; let i = index" [ngClass] = "{'active': i === 1}">
-        <ik-image [src]="slide" [transformation]="transformationImgCasaDescanso" class="d-block w-100" style="height: 90vh;"></ik-image>
+        <ik-image [src]="slide" [transformation]="transformationImgCasaDescanso" class="d-block w-100" style="height: 90vh; border-radius: 10px !important;"></ik-image>
         
         <!-- <img [src]="slide" alt=""> -->
 
