@@ -3,8 +3,11 @@
   margin-bottom: 30px;
 }
 
-img {
+.imgPrincipal {
   border-radius: 5px 0 0 0;
+}
+.galeria{
+  border-radius: 10px !important;
 }
 .btn {
   width: 200px;
@@ -37,6 +40,14 @@ max-height: 200px;
   width: 100%;
   padding: 2em;
 } */
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 540px) {

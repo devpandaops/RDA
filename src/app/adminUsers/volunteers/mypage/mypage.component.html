@@ -18,7 +18,7 @@
         (click)="updateStatusVoluntaryCTRL()"
       >
         {{ Voluntary.status }}
-        <span
+        <!-- <span
           class="
             position-absolute
             top-0
@@ -31,7 +31,7 @@
         >
           Novo
           <span class="visually-hidden">New alerts</span>
-        </span>
+        </span> -->
       </button>
       <!-- <span
         [ngClass]="{
@@ -58,16 +58,9 @@
               cabecalhoMyPage
             "
           >
-            <!-- <div *ngIf="Voluntary" class="divImg"> -->
-            <!-- <ik-image
-                style="height: 50% !important"
-                class="img-fluid imgPrincipal"
-                [src]="Voluntary.urlsImage.urlImgPrincipal"
-                [transformation]="transformationImg"
-              ></ik-image> -->
             <img
               [src]="Voluntary.urlsImage.urlImgPrincipal"
-              class="img-fluid imgPrincipal"
+              class="img-fluid imgPrincipal "
               alt=""
             />
             <!-- </div> -->
@@ -99,9 +92,10 @@
               list-group-item list-group-item-action
               flex-column
               align-items-start
+              mb-2
             "
           >
-            <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex justify-content-between ">
               <h4 class="mb-1">Endereço</h4>
             </div>
             <div class="d-flex flex-wrap">
@@ -120,25 +114,27 @@
               <p class="mb-1">{{ Voluntary.endereco.CEP }}</p>
             </div>
           </div>
-          <br />
+        
           <div
             class="
+            mb-2
               list-group-item list-group-item-action
               flex-column
               align-items-start
             "
           >
-            <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex justify-content-between">
               <h4 class="mb-1">Igreja</h4>
             </div>
             <p class="mb-1">{{ Voluntary.nomeIg }}</p>
             <div class="d-flex"></div>
           </div>
 
-          <br />
+         
           <div>
             <div
               class="
+              mb-2
                 list-group-item list-group-item-action
                 flex-column
                 align-items-start
@@ -151,8 +147,7 @@
               <div class="d-flex"></div>
             </div>
           </div>
-          <br />
-
+   
           <div>
             <div
               class="
@@ -217,21 +212,31 @@
 
           <div
             *ngIf="Voluntary.urlsImage.urlImgsCasaDescanso.length > 0"
-            class="carousel"
+            class=" "
           >
             <!-- Button trigger modal -->
 
             <div
-              class="d-flex justify-content-center align-items-center"
+              class="d-flex justify-content-center align-items-center "
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
+            <div class="d-flex justify-content-between align-items-stretch flex-wrap div-galeira" *ngFor="let item of slides">
               <img
-                [src]="Voluntary.urlsImage.urlImgCasaDescansoPrincipal"
-                style="max-height: 400px; max-width: 400px;"
-                class="d-block w-100"
-                alt=""
+              [src]="item"
+              style="max-height: 400px; max-width: 400px;"
+              class="d-block w-100 galeria p-1"
+              alt=""
               />
+              
+            </div>
+            <!-- <h1>Click para ver todas as imagens</h1> -->
+            <!-- <img
+              [src]="Voluntary.urlsImage.urlImgCasaDescansoPrincipal"
+              style="max-height: 400px; max-width: 400px;"
+              class="d-block w-100"
+              alt=""
+            /> -->
             </div>
         
             <!-- Modal -->
