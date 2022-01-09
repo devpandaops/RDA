@@ -85,7 +85,7 @@ export class FormCadAdminUsersComponent implements OnInit {
       this.addingStatusToAdministrators();
 
       this.adminService.saveAdministrators(this.formulario.value).subscribe(
-        (adminUser) => {
+        {next:(adminUser) => {
           this.activAlert(
             'success',
             `os dados de ${this.nome} foram cadastrados com sucesso!`
@@ -93,7 +93,7 @@ export class FormCadAdminUsersComponent implements OnInit {
             console.log(`Os dados do ${this.nome} foram salvos com sucesso`);
           this.formulario.reset(); // reseta formulário
         },
-        (error) => {
+        error:(error) => {
           this.activAlert(
             'danger',
             'Por algum motivo os dados não puderam ser salvos'
@@ -101,7 +101,7 @@ export class FormCadAdminUsersComponent implements OnInit {
           console.error(
             `Os dados do ${this.nome} não puderam ser salvos: => Relatório: ${error}`
           );
-        }
+        }}
       );
     }
   }

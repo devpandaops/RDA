@@ -41,11 +41,11 @@ import { PublicPageModule } from './public-page/public-page.module';
     LoginComponent,
   ],
   imports: [
-  //  ImagekitioAngularModule.forRoot({
-  //     publicKey: environment.PUBLICKEY,
-  //     urlEndpoint: environment.URL_ENDPOINT,
-  //     authenticationEndpoint: environment.authenticationEndpoint
-  //   }),
+    //  ImagekitioAngularModule.forRoot({
+    //     publicKey: environment.PUBLICKEY,
+    //     urlEndpoint: environment.URL_ENDPOINT,
+    //     authenticationEndpoint: environment.authenticationEndpoint
+    //   }),
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AdminUsersModule,
     AppFormsModule,
@@ -68,12 +68,12 @@ import { PublicPageModule } from './public-page/public-page.module';
     FiltroPersonalizadoService,
     AuthService,
     AuthGuard,
-    httpInterceptorProviders
+    httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],
   exports: [
     MainComponent,
     //  ImagekitioAngularModule
-    ],
+  ],
 })
-export class AppModule { }
+export class AppModule {}

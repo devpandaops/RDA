@@ -329,6 +329,9 @@
       
         <div>
           <div class="form-check form-switch col">
+            <p style="font-weight: 500" class="mr-5 mt-3">
+              O que pode oferecer aos missionários?
+            </p>
             <div>
               <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido')" class="form-check-input px-3 py-2" type="radio" id="servicoOferecidoAtendimentos" name="servicoOferecido" formControlName="servicoOferecido" value="servicoOferecidoAtendimentos" />
               <label class="form-check-label" for="servicoOferecidoAtendimentos">Atendimentos</label>
@@ -374,6 +377,9 @@
         <label for="floatingInput">Como você desenvolve o ministério de oração/intercessão na sua igreja?</label>
       </div>
       <div class="form-check form-switch col">
+        <p style="font-weight: 500" class="mr-5 mt-3">
+          Você tem habilidades na utilização do WhatsApp e Telegram?
+        </p>
         <div>
           <input [ngClass]="applyCss('voluntarioIntercessor.habilidadesWhatsapp')" class="form-check-input px-3 py-2" type="radio" id="habilidadesWhatsapp-sim" name="habilidadesWhatsapp" formControlName="habilidadesWhatsapp" value="sim" />
           <label class="form-check-label" for="habilidadesWhatsapp-sim">Sim</label>
@@ -446,14 +452,13 @@
             </div>
           </div>
 
-          <div class="d-flex-wrap m-3 mb-4 form-floating col flex-grow-1">
-            <textarea style="height: 100px" [ngClass]="
-                applyCssGroup(
-                  'aconselhamentoBiblico.experienciaAconselhamentoBiblico'
-                )
-              " class="form-control col flex-grow-1" placeholder="descreva" id="experienciaAconselhamentoBiblico"
-              formControlName="experienciaAconselhamentoBiblico"></textarea>
-            <label class="px-1 py-2 labelText-responsive" for="experienciaAconselhamentoBiblico" style="margin-top: 10px">Em poucas linhas,
+        </div>
+
+        <div class="row d-flex-wrap m-3">
+          <div class="form-floating campo form-group col">
+            <textarea style="height: 100px" [ngClass]="applyCssGroup('aconselhamentoBiblico.experienciaAconselhamentoBiblico')" class="form-control"
+              placeholder="Observações" id="experienciaAconselhamentoBiblico" formControlName="experienciaAconselhamentoBiblico"></textarea>
+            <label class="" for="experienciaAconselhamentoBiblico">Em poucas linhas,
               descreva sobre a sua experiência em
               aconselhamento bíblico.</label>
           </div>

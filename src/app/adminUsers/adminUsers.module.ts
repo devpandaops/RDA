@@ -19,6 +19,7 @@ import { MyPageAdminUsersComponent } from './myPageAdminUsers/myPageAdminUsers.c
 import { PipesModule } from '../shared/pipes/pipes.module';
 import { environment } from 'src/environments/environment';
 import { ImagekitioAngularModule } from 'imagekitio-angular';
+import { DashboardService } from './dashboard/dashboard.service';
 
 @NgModule({
   imports: [
@@ -53,5 +54,6 @@ import { ImagekitioAngularModule } from 'imagekitio-angular';
     
   ],
   exports: [SideBarComponent],
+  providers:[DashboardService]
 })
 export class AdminUsersModule {}

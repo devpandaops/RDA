@@ -27,6 +27,8 @@ import { AlertService } from './../../../shared/services/alert.service';
 export class FormCadComponent implements OnInit, OnChanges {
 
   // Variávei de controle 
+
+
   servicoOferecidoOutrosControl:boolean = false;
 
   alertState = 'hide';
@@ -61,6 +63,7 @@ export class FormCadComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
 
   }
+  idVoluntario =  this.route.snapshot.params["id"]
 
 
   public toggle(view?: string): void {
@@ -315,7 +318,7 @@ export class FormCadComponent implements OnInit, OnChanges {
 
   public UpdateVoluntaryCTRL(VoluntaryDataFormUpdated: VoluntaryModel): void {
     this.dadoCarregado= false
-    this.voluntaryService.updateVolunteerID(VoluntaryDataFormUpdated).subscribe({
+    this.voluntaryService.updateVolunteerID(VoluntaryDataFormUpdated, this.idVoluntario).subscribe({
       next:(voluntary) => {
         this.dadoCarregado= true
         this.activAlert(

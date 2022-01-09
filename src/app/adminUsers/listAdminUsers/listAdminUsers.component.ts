@@ -36,9 +36,9 @@ export class ListAdminUsersComponent implements OnInit {
     );
 
     this.administratorsObservable.subscribe(
-      (administrators: AdministratorModel[]) => (this.administrators = administrators),
-      (error: any) => console.log(error),
-      () => console.log('Evento concluido')
+  {   next: (administrators: AdministratorModel[]) => (this.administrators = administrators),
+      error:(error: any) => console.log(error),
+      complete:() => console.log('Evento concluido')}
     );
   }
 

@@ -57,8 +57,10 @@ export class VolunteersService {
 
   // Atualiza um voluntário
   public updateVolunteerID(
-    voluntary: VoluntaryModel
+    voluntary: VoluntaryModel, id: String
   ): Observable<VoluntaryModel> {
+    let idVoluntary = id ? id: voluntary._id
+    console.log( "id do voluntario",idVoluntary)
     return this.http
       .put<VoluntaryModel>(
         `${this.API}/${voluntary._id}`,

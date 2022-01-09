@@ -20,7 +20,7 @@ export class FormCadVolunteersResolverGuard implements Resolve<VoluntaryModel> {
     state: RouterStateSnapshot
   ): Observable<VoluntaryModel> {
     const idVoluntary = route.params.id;
-    console.log(idVoluntary);
+    // console.log(idVoluntary);
 
     if (route.params && idVoluntary) {
       return this.voluntaryService.getVolunteersPorId(idVoluntary);

@@ -6,7 +6,7 @@ export function toFormData<T>(formValue: VoluntaryModel): FormData {
   const formData = new FormData();
   
   if (formValue.imgFilePrincipal != null) {
-    console.log('1');
+
     formData.append(
       'imgFilePrincipal',
       formValue.imgFilePrincipal[0],
@@ -15,7 +15,7 @@ export function toFormData<T>(formValue: VoluntaryModel): FormData {
 
   }
   if (formValue.imgsCasaDescansoFile != null) {
-    console.log('2');
+
 
     Object.keys(formValue.imgsCasaDescansoFile).forEach((element, index) => {
       formData.append(
@@ -27,15 +27,13 @@ export function toFormData<T>(formValue: VoluntaryModel): FormData {
   }
 
   if (formValue.imgFileCasaDescansoPrincipal != null) {
-    console.log('3');
+
     formData.append(
       'imgFileCasaDescansoPrincipal',
       formValue.imgFileCasaDescansoPrincipal[0],
       formValue.imgFileCasaDescansoPrincipal.name
     );
   } 
-  console.log(formValue);
-
 
   const formulario = formValue;
   delete formulario._id;
