@@ -21,7 +21,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.numberAllUsers("All");
+
+    this.getbirthdayListCTRL()
   
+  }
+  public getbirthdayListCTRL(){
+    this.dashboardService.getbirthdayList().subscribe({
+      next:birthdayList => console.log("o que retornou",birthdayList),
+      error: error => console.log(error)
+    })
   }
 
  public numberAllUsers(type: string) {
@@ -32,14 +40,16 @@ export class DashboardComponent implements OnInit {
         this.lengthAdministrators = this.lengthUsers.administradores
         this.lengthMissionaries = this.lengthUsers.missionarios
         this.lengthVolunteers = this.lengthUsers.voluntarios
+        this.allUsers= this.lengthAdministrators + this.lengthMissionaries + this.lengthVolunteers
         } ,
       error: (error) =>
         console.log(
           `Não foi possível receber a quantidade de usuários devido ao seguinte erro ${error}`
         ),
     });
-   console.log(JSON.stringify(this.lengthUsers))
+  //  console.log(JSON.stringify(this.lengthUsers))
   }
+
 
   public openSideBar(event?: Event): void {
     event.preventDefault();

@@ -175,7 +175,7 @@
 
       <div class="row m-3 mb-4 d-flex flex-wrap forcedResponsiveness">
         <div class="form-floating col">
-          <select class="form-select" id="inputEstadoCivil" formControlName="EstadoCivil">
+          <select class="form-select" id="inputEstadoCivil" formControlName="estadoCivil">
             <option value="null">Selecione</option>
             <option value="Solteiro">Solteiro</option>
             <option value="Casado">Casado</option>
@@ -327,41 +327,41 @@
           <label for="floatingInput">Escreva 5 ou mais dicas da sua especialidade para os missionários</label>
         </div>
       
-        <div>
+        <div formGroupName="servicoOferecido">
           <div class="form-check form-switch col">
             <p style="font-weight: 500" class="mr-5 mt-3">
               O que pode oferecer aos missionários?
             </p>
             <div>
-              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido')" class="form-check-input px-3 py-2" type="radio" id="servicoOferecidoAtendimentos" name="servicoOferecido" formControlName="servicoOferecido" value="servicoOferecidoAtendimentos" />
+              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido.servicoOferecidoAtendimentos')" class="form-check-input px-3 py-2" type="checkbox" id="servicoOferecidoAtendimentos" name="servicoOferecidoAtendimentos" formControlName="servicoOferecidoAtendimentos" />
               <label class="form-check-label" for="servicoOferecidoAtendimentos">Atendimentos</label>
             </div>
             <div>
-              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido')" class="form-check-input px-3 py-2" type="radio" id="servicoOferecidoConsultorias" name="servicoOferecido" formControlName="servicoOferecido" value="servicoOferecidoConsultorias" />
+              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido.servicoOferecidoConsultorias')" class="form-check-input px-3 py-2" type="checkbox" id="servicoOferecidoConsultorias" name="servicoOferecidoConsultorias" formControlName="servicoOferecidoConsultorias"  />
               <label class="form-check-label" for="servicoOferecidoConsultorias">Consultorias</label>
             </div>
             <div>
-              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido')" class="form-check-input px-3 py-2" type="radio" id="servicoOferecidoPalestras" name="servicoOferecido" formControlName="servicoOferecido" value="servicoOferecidoPalestras" />
+              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido.servicoOferecidoPalestras')" class="form-check-input px-3 py-2" type="checkbox" id="servicoOferecidoPalestras" name="servicoOferecidoPalestras" formControlName="servicoOferecidoPalestras"  />
               <label class="form-check-label" for="servicoOferecidoPalestras">Palestras</label>
             </div>
             <div>
-              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido')" class="form-check-input px-3 py-2" type="radio" id="servicoOferecidoGruposDeOrientacaoWhatsapp" name="servicoOferecido" formControlName="servicoOferecido" value="servicoOferecidoGruposDeOrientacaoWhatsapp" />
+              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido.servicoOferecidoGruposDeOrientacaoWhatsapp')" class="form-check-input px-3 py-2" type="checkbox" id="servicoOferecidoGruposDeOrientacaoWhatsapp" name="servicoOferecidoGruposDeOrientacaoWhatsapp" formControlName="servicoOferecidoGruposDeOrientacaoWhatsapp" />
               <label class="form-check-label" for="servicoOferecidoGruposDeOrientacaoWhatsapp">Grupos de orientação no WhatsApp</label>
             </div>
             <div>
-              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido')" class="form-check-input px-3 py-2" type="radio" id="servicoOferecidoEscreverConteudos" name="servicoOferecido" formControlName="servicoOferecido" value="servicoOferecidoEscreverConteudos" />
+              <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido.servicoOferecidoEscreverConteudos')" class="form-check-input px-3 py-2" type="checkbox" id="servicoOferecidoEscreverConteudos" name="servicoOferecidoEscreverConteudos" formControlName="servicoOferecidoEscreverConteudos"  />
               <label class="form-check-label" for="servicoOferecidoEscreverConteudos">Escrever conteúdos</label>
             </div>
             <div class="row">
               <div class="col-2">
-                <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido')" class="form-check-input px-3 py-2" type="radio" id="servicoOferecidoOutros" name="servicoOferecido" formControlName="servicoOferecido" value="servicoOferecidoOutros" />
+                <input [ngClass]="applyCss('voluntarioProfissao.servicoOferecido.servicoOferecidoOutros')" class="form-check-input px-3 py-2" type="checkbox" id="servicoOferecidoOutros" name="servicoOferecido" formControlName="servicoOferecidoOutros"  />
                 <label class="form-check-label" for="servicoOferecidoOutros">Outros</label>
               </div>
 
-              <div class="col" *ngIf="servicoOferecido.value === 'servicoOferecidoOutros'" >
+              <div class="col" *ngIf="servicoOferecidoOutros.value" >
                 <div class=" form-floating ">
                   <input type="text" class="form-control" id="especialidade" placeholder="Qual a especialidade?"
-                    formControlName="servicoOferecidoOutros" />
+                    formControlName="servicoOferecidoOutrosDescrito" />
                   <label for="floatingInput" style="margin-left: -5px;">Qual a especialidade?</label>
                 </div>
               </div>

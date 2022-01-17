@@ -39,6 +39,6 @@ export class AuthInterceptor implements HttpInterceptor {
       );
     }
     // retornar um observable com uma mensagem amigável
-    return throwError(() => new Error('Usuário ou senha incorretos, tente novamente'));
+    return throwError(() => new Error(error.error));
   }
 }

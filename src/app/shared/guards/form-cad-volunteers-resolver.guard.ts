@@ -71,8 +71,15 @@ export class FormCadVolunteersResolverGuard implements Resolve<VoluntaryModel> {
       voluntarioProfissao: {
         especialidade: '',
         dicasEspecialidade: '',
-        servicoOferecido: '',
-        servicoOferecidoOutros: '',
+        servicoOferecido:{
+          servicoOferecidoAtendimentos:false,
+          servicoOferecidoConsultorias:false,
+          servicoOferecidoPalestras:false,
+          servicoOferecidoGruposDeOrientacaoWhatsapp:false,
+          servicoOferecidoEscreverConteudos:false,
+          servicoOferecidoOutros:false,
+          servicoOferecidoOutrosDescrito:'',
+          }
       },
 
       voluntarioIntercessor: {

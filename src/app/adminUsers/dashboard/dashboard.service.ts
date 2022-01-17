@@ -18,15 +18,16 @@ export class DashboardService {
   }
 
   public getbirthdayList(): Observable<any> {
+
     return this.http.get<number>(`${this.API}/birthday`).pipe(take(1));
   }
 
   public getLastRegistrations(): Observable<any> {
-    return this.http.get<number>(`${this.API}/birthday`).pipe(take(1));
+    return this.http.get<number>(`${this.API}/LastRegistrations`).pipe(take(1));
   }
   
   public getLatestRegistrationUpdates(): Observable<any> {
-    return this.http.get<number>(`${this.API}/birthday`).pipe(take(1));
+    return this.http.get<number>(`${this.API}/LatestRegistrationUpdates`).pipe(take(1));
   }
 }
 

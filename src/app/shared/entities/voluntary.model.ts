@@ -43,8 +43,15 @@ export interface VoluntaryModel {
   voluntarioProfissao:{
     especialidade: string;
     dicasEspecialidade:string
-    servicoOferecido: string;
-    servicoOferecidoOutros: string;
+    servicoOferecido:{
+      servicoOferecidoAtendimentos:boolean;
+      servicoOferecidoConsultorias:boolean;
+      servicoOferecidoPalestras:boolean;
+      servicoOferecidoGruposDeOrientacaoWhatsapp:boolean;
+      servicoOferecidoEscreverConteudos:boolean;
+      servicoOferecidoOutros: boolean;
+      servicoOferecidoOutrosDescrito: string;
+      }
   };
   voluntarioIntercessor:{
     ministerioNaIgreja: string;

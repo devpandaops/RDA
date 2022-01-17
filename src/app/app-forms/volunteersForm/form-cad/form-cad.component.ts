@@ -103,7 +103,7 @@ export class FormCadComponent implements OnInit, OnChanges {
         profissao: [this.Voluntary.profissao, [Validators.required]],
         telefone: [this.Voluntary.telefone, [Validators.required]],
         telefoneFx: [this.Voluntary.telefoneFx],
-        EstadoCivil: [this.Voluntary.estadoCivil],
+        estadoCivil: [this.Voluntary.estadoCivil],
         imgFilePrincipal: [null, [Validating.requiredFileTypeImg]],
         email: [this.Voluntary.email, [Validators.required, Validators.email]],
         password: [null],
@@ -133,8 +133,17 @@ export class FormCadComponent implements OnInit, OnChanges {
         voluntarioProfissao: this.formBuilder.group({
           especialidade: [this.Voluntary.voluntarioProfissao.especialidade],
           dicasEspecialidade: [this.Voluntary.voluntarioProfissao.dicasEspecialidade],
-          servicoOferecido: [this.Voluntary.voluntarioProfissao.servicoOferecido],
-          servicoOferecidoOutros: [this.Voluntary.voluntarioProfissao.servicoOferecidoOutros],
+          servicoOferecido: this.formBuilder.group({
+            servicoOferecidoAtendimentos: [this.Voluntary.voluntarioProfissao.servicoOferecido.servicoOferecidoAtendimentos],
+            servicoOferecidoConsultorias: [this.Voluntary.voluntarioProfissao.servicoOferecido.servicoOferecidoConsultorias],
+            servicoOferecidoPalestras: [this.Voluntary.voluntarioProfissao.servicoOferecido.servicoOferecidoPalestras],
+            servicoOferecidoGruposDeOrientacaoWhatsapp: [this.Voluntary.voluntarioProfissao.servicoOferecido.servicoOferecidoGruposDeOrientacaoWhatsapp],
+            servicoOferecidoEscreverConteudos: [this.Voluntary.voluntarioProfissao.servicoOferecido.servicoOferecidoEscreverConteudos],
+            servicoOferecidoOutros: [this.Voluntary.voluntarioProfissao.servicoOferecido.servicoOferecidoOutros],
+            servicoOferecidoOutrosDescrito: [this.Voluntary.voluntarioProfissao.servicoOferecido.servicoOferecidoOutrosDescrito],
+
+          })
+
         }),
         voluntarioIntercessor: this.formBuilder.group({
           ministerioNaIgreja: [this.Voluntary.voluntarioIntercessor.ministerioNaIgreja],
@@ -653,9 +662,32 @@ export class FormCadComponent implements OnInit, OnChanges {
   get dicasEspecialidade(): AbstractControl {
     return this.formulario.get(['voluntarioProfissao', 'dicasEspecialidade']);
   }
+
   get servicoOferecido(): AbstractControl {
     return this.formulario.get(['voluntarioProfissao', 'servicoOferecido']);
   }
+  get servicoOferecidoAtendimentos(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido','servicoOferecidoAtendimentos']);
+  }
+  get servicoOferecidoConsultorias(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido','servicoOferecidoConsultorias']);
+  }
+  get servicoOferecidoPalestras(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido','servicoOferecidoPalestras']);
+  }
+  get servicoOferecidoGruposDeOrientacaoWhatsapp(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido','servicoOferecidoGruposDeOrientacaoWhatsapp']);
+  }
+  get servicoOferecidoEscreverConteudos(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido','servicoOferecidoEscreverConteudos']);
+  }
+  get servicoOferecidoOutros(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido','servicoOferecidoOutros']);
+  }
+  get servicoOferecidoOutrosDescrito(): AbstractControl {
+    return this.formulario.get(['voluntarioProfissao', 'servicoOferecido','servicoOferecidoOutrosDescrito']);
+  }
+
   get voluntarioIntercessor(): AbstractControl {
     return this.formulario.get('voluntarioIntercessor');
   }
