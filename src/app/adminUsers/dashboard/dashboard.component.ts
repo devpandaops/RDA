@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
-    this.numberAllUsers("All");
+    this.numberAllUsers();
 
     this.getbirthdayListCTRL()
   
@@ -31,10 +31,10 @@ export class DashboardComponent implements OnInit {
       error: error => console.log(error)
     })
   }
+ 
+ public numberAllUsers() {
 
- public numberAllUsers(type: string) {
-
-    this.dashboardService.getLengthUsers(type).subscribe({
+    this.dashboardService.getLengthUsers().subscribe({
       next: (quantUsers: number) => {
          this.lengthUsers =  quantUsers
         this.lengthAdministrators = this.lengthUsers.administradores
