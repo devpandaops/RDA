@@ -3,6 +3,8 @@
 # compiled output
 /.angular/cache
 /.angular
+.angular/cache/babel-webpack
+/.angular/cache/babel-webpack
 /dist
 /tmp
 /out-tsc
