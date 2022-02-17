@@ -2,6 +2,7 @@
 
 # compiled output
 /.angular/cache
+/.angular
 /dist
 /tmp
 /out-tsc

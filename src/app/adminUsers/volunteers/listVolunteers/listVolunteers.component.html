@@ -1,26 +1,83 @@
-<div class="container">
-  <form class="row form-inline mt-4">
-    <input class="form-control mr-sm-2" #termoDaPesquisa type="search" placeholder="Pesquisar"
-      (keyup)="pesquisa(termoDaPesquisa.value)" />
-  </form>
+<div class="container flex-wrap">
+  <div class="row d-flex justify-content-center align-items-center ">
+    <form class="col form-inline mt-4">
+      <input class="form-control mr-sm-2" #termoDaPesquisa type="search" placeholder="Pesquisar"
+        (keyup)="pesquisa(termoDaPesquisa.value)" />
+    </form>
+
+
+    <!-- <div class="col-2 d-flex flex-column mt-3 ">
+      <div class="form-check form-switch ">
+        <input class="form-check-input" type="checkbox" id="localDescanso">
+        <label class="form-check-label" for="localDescanso">local descanso</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+
+    </div> -->
+  </div>
+  <p>
+    <a class="" style="text-decoration: none;" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      filtros
+    </a>
+
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div class="form-check form-switch ">
+        <input class="form-check-input" type="checkbox" id="localDescanso">
+        <label class="form-check-label" for="localDescanso">local descanso</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="voluntario">
+        <label class="form-check-label" for="voluntario">Voluntário</label>
+      </div>
+    </div>
+  </div>
   <hr />
   <div class="flex-container d-flex flex-column">
     <div class="list-group col" *ngFor="let item of volunteers$ | async">
 
-      <div *ngIf="!item.typeVoluntary.chekbox4CasaDescanso">
+      <div *ngIf="!item.typeVoluntary.chekbox4CasaDescanso" class="list-group">
         <a class="list-group-item list-group-item-action d-flex shadow bg-body rounded mb-2" aria-current="true"
           [routerLink]="['/sideBar/voluntary',item._id] ">
           <div class="divImgPrincipal">
             <ik-image class="imgPrincipal" [src]="item.urlsImage.urlImgPrincipal" [transformation]="transformationImg2">
             </ik-image>
           </div>
-          <div class="col descricao">
+          <div class="col responsive">
             <div class="d-flex w-100 justify-content-between align-items-center">
-              <h5 class="mb-1 ">{{item.nome}}</h5>
+              <p class="mb-1 fs-4 text ">{{item.nome}}</p>
               <small>{{item.dataCad}}</small>
                 <span
                  [ngClass]="{'bg-success': item.status == 'ATIVO', 'bg-secondary': item.status != 'ATIVO' }" 
-                 class="badge">{{item.status}}</span>
+                 class="badge ms-1">{{item.status}}</span>
             </div>
             <div class="d-flex">
               <div class="mt-3" *ngIf="item.dataNascimento != 'null'">
@@ -40,7 +97,7 @@
           </div>
         </a>
       </div>
-      <div *ngIf="item.typeVoluntary.chekbox4CasaDescanso">
+      <div *ngIf="item.typeVoluntary.chekbox4CasaDescanso " class="list-group">
         <a class="list-group-item list-group-item-action d-flex shadow bg-body rounded mb-2" aria-current="true"
           [routerLink]="['/sideBar/voluntary',item._id] ">
           <div class="divImgPrincipal">
@@ -53,9 +110,9 @@
             </div>
 
           </div>
-          <div class="col">
-            <div class="d-flex w-100 justify-content-between align-items-center ">
-              <p class="fs-4 text">  {{item.localDescanso.nomeLocalDescanso}}</p>
+          <div class="col flex-wrap ">
+            <div class="d-flex w-100 justify-content-between align-items-center responsive">
+              <p class="fs-4 text ">  {{item.localDescanso.nomeLocalDescanso}}</p>
               <div class=" fs-6 text d-flex">Proprietário: 
                 <p class=" fw-bolder ms-3">
                   {{item.nome}}
