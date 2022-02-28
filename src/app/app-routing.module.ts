@@ -11,6 +11,7 @@ import { MissionariesRoutingModule } from './missionaries/missionaries.routing.m
 import { MainComponent } from './main/main.component';
 import { Erro404Component } from './shared/erro404/erro404.component';
 import { LoginComponent } from './login/login.component';
+import { SharedRoutingModule } from './shared/shared.routing.module';
 
 
 const routes: Routes = [];
@@ -21,6 +22,7 @@ const routes: Routes = [];
     AppFormsRoutingModule,
     MissionariesRoutingModule,
     AdminUsersRoutingModule,
+    SharedRoutingModule,
     RouterModule.forRoot(
       [
         { path: '', redirectTo: 'sideBar', pathMatch: 'full' },

@@ -7,8 +7,8 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { AdministratorModel } from '../entities/administrator.model';
-import { VolunteersService } from '../../adminUsers/volunteers/services/volunteers.service';
-import { AdminService } from 'src/app/adminUsers/admin.service';
+import { VolunteersService } from '../../services/volunteers.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Injectable({
   providedIn: 'root',

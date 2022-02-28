@@ -14,7 +14,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 import { alertAnimation } from 'src/app/shared/services/alert-animation';
 import { FormValidationControl } from '../../services/form-validation-control.service';
 import { threadId } from 'worker_threads';
-import { AdminService } from '../../../adminUsers/admin.service';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'app-formCadAdminUsers',

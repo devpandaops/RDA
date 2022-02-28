@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { VoluntaryModel } from 'src/app/shared/entities/voluntary.model';
-import {VolunteersService} from '../services/volunteers.service';
+import {VolunteersService} from '../../../services/volunteers.service';
 
 
 @Component({
@@ -13,6 +13,10 @@ import {VolunteersService} from '../services/volunteers.service';
   providers: [VolunteersService]
 })
 export class ListVolunteersComponent implements OnInit {
+
+
+  public typeListUsers: String = "VOLUNTARY"
+  public loggedinUserType: String = "ADMINISTRATOR"
 
   public volunteers: VoluntaryModel[];
   public volunteers$: Observable<VoluntaryModel[]> ;

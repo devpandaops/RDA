@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+// import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { AdminService } from './../admin.service';
+// import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { AdminService } from '../../services/admin.service';
 import { AdministratorModel } from 'src/app/shared/entities/administrator.model';
 @Component({
   selector: 'app-listAdminUsers',
@@ -16,34 +16,17 @@ export class ListAdminUsersComponent implements OnInit {
   public administrator: AdministratorModel;
   public administratorsObservable: Observable<AdministratorModel[]>;
   private subjectPesquisa: Subject<string> = new Subject<string>();
+  public typeListUsers: String = "ADMINISTRATOR"
+  public loggedinUserType: String = "ADMINISTRATOR"
 
   constructor(
-    private administratorService: AdminService,
-    private route: ActivatedRoute
+
   ) { }
   transformationImg = [{ "height": "300", "width": "400" }];
   transformationImg2 = [{ 'height': '100', 'width': '100' }];
   ngOnInit(): void {
-    this.administrators$ = this.administratorService.getAdministrators()
 
-    this.administratorsObservable = this.subjectPesquisa
-    .pipe(debounceTime(1000))
-    .pipe(distinctUntilChanged())
-    .pipe(
-      switchMap((termo: string) => {
-        return this.administratorService.searchAdministrators(termo);
-      })
-    );
-
-    this.administratorsObservable.subscribe(
-  {   next: (administrators: AdministratorModel[]) => (this.administrators = administrators),
-      error:(error: any) => console.log(error),
-      complete:() => console.log('Evento concluido')}
-    );
   }
 
-  public pesquisa(termoDaPesquisa: string): void {
-    this.subjectPesquisa.next(termoDaPesquisa);
-  }
 
 }

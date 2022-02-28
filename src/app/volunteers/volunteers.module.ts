@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { PipesModule } from '../shared/pipes/pipes.module';
 import { NgModule } from '@angular/core';
 
-import { VolunteersService } from '../adminUsers/volunteers/services/volunteers.service';
+import { VolunteersService } from '../services/volunteers.service';
 // import { ImagekitioAngularModule } from 'imagekitio-angular';
 import { environment } from 'src/environments/environment';
 import { HomePageVoluntaryComponent } from './home-page-voluntary/home-page-voluntary.component';

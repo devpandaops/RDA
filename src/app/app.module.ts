@@ -22,7 +22,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './login/login.component';
 
 import { FiltroPersonalizadoService } from './app-forms/services/filtro-personalizado.service';
-import { VolunteersService } from './adminUsers/volunteers/services/volunteers.service';
+import { VolunteersService } from './services/volunteers.service';
 
 import { AuthService } from './login/auth.service';
 // import { ImagekitioAngularModule } from 'imagekitio-angular';

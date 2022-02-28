@@ -6,10 +6,10 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry, retryWhen, take } from 'rxjs/operators';
-import { toFormData } from 'src/app/app-forms/fileUpload/toFormData';
+import { toFormDataVoluntary } from 'src/app/app-forms/fileUpload/toFormData';
 import { VoluntaryModel } from 'src/app/shared/entities/voluntary.model';
-import { environment } from '../../../../environments/environment';
-
+import { environment } from '../../environments/environment';
+ 
 
 @Injectable()
 export class VolunteersService {
@@ -44,7 +44,7 @@ export class VolunteersService {
     return this.http
       .post<VoluntaryModel>(
         `${this.API}`,
-        toFormData(voluntary)
+        toFormDataVoluntary(voluntary)
       )
       .pipe(retry(2), 
       catchError((err) => {
@@ -63,7 +63,7 @@ export class VolunteersService {
     return this.http
       .put<VoluntaryModel>(
         `${this.API}/${voluntary._id}`,
-        toFormData(voluntary)
+        toFormDataVoluntary(voluntary)
       )
       .pipe(retry(2), 
       // catchError(error => this.handleError(error))

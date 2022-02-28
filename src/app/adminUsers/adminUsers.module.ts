@@ -1,4 +1,3 @@
-import { MypageComponent } from './volunteers/mypage/mypage.component';
 import { SharedModule } from './../shared/shared.module';
 import { ListVolunteersComponent } from './volunteers/listVolunteers/listVolunteers.component';
 import { ListMissionariesComponent } from './missionaries/listMissionaries/listMissionaries.component';
@@ -48,7 +47,6 @@ import { DashboardService } from './dashboard/dashboard.service';
     SideBarComponent,
     ListMissionariesComponent,
     ListVolunteersComponent,
-    MypageComponent
     
  
     

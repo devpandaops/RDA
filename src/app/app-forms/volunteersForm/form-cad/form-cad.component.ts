@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { stringify } from 'querystring';
-import { VolunteersService } from 'src/app/adminUsers/volunteers/services/volunteers.service';
+import { VolunteersService } from 'src/app/services/volunteers.service';
 import { VoluntaryModel } from '../../../shared/entities/voluntary.model';
 import { FormValidationControl } from '../../services/form-validation-control.service';
 import { Validating } from '../../util/validacoes';

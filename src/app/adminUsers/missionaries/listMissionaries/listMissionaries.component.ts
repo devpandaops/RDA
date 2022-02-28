@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListMissionariesComponent implements OnInit {
 
+  public typeListUsers: String = "MISSIONARY"
+  public loggedinUserType: String = "ADMINISTRATOR"
   constructor() { }
 
   ngOnInit() {

@@ -1,4 +1,10 @@
+
 <div class="container flex-wrap">
+  <app-list-users [typeListUsers]="typeListUsers" [loggedinUserType]="loggedinUserType" ></app-list-users>
+</div>
+
+
+<!-- <div class="container flex-wrap">
   <div class="row d-flex justify-content-center align-items-center ">
     <form class="col form-inline mt-4">
       <input class="form-control mr-sm-2" #termoDaPesquisa type="search" placeholder="Pesquisar"
@@ -16,7 +22,7 @@
         <label class="form-check-label" for="voluntario">Voluntário</label>
       </div>
 
-    </div> -->
+    </div> 
   </div>
   <p>
     <a class="" style="text-decoration: none;" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -118,7 +124,7 @@
                   {{item.nome}}
                 </p>
               </div>
-              <!-- <p class="mb-1 fs-5 text"> Proprietário: {{item.nome}}</p> -->
+              <!-- <p class="mb-1 fs-5 text"> Proprietário: {{item.nome}}</p> 
               <small class="mb-1">{{item.dataCad}}</small>
               <span
               [ngClass]="{'bg-success': item.status == 'ATIVO', 'bg-secondary': item.status != 'ATIVO' }" 
@@ -136,7 +142,7 @@
                 <p class="m-3"*ngIf="item.localDescanso.typeLocalDescanso.casaDeCampo">Casa de Campo,</p>
                 <p class="m-3"*ngIf="item.localDescanso.typeLocalDescanso.pousada">Pusada,</p>
                 <p class="m-3"*ngIf="item.localDescanso.typeLocalDescanso.hotel" >Hotel,</p>
-                <!-- <p class="mb-1 m-3">{{item.profissao}}</p> -->
+                <p class="mb-1 m-3">{{item.profissao}}</p> 
             
               </div>
 
@@ -147,4 +153,4 @@
 
     </div>
   </div>
-</div>
+</div> -->

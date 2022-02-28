@@ -1,17 +1,20 @@
-import { SideBarComponent } from './sideBar/sideBar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MyPageAdminUsersComponent } from './myPageAdminUsers/myPageAdminUsers.component';
+import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListAdminUsersComponent } from './listAdminUsers/listAdminUsers.component';
-import { AuthGuard } from './../shared/guards/auth.guard';
+import { SideBarComponent } from '../adminUsers/sideBar/sideBar.component';
+import { DashboardComponent } from '../adminUsers/dashboard/dashboard.component';
+import { ListAdminUsersComponent } from '../adminUsers/listAdminUsers/listAdminUsers.component';
 import { ListMissionariesComponent } from '../adminUsers/missionaries/listMissionaries/listMissionaries.component';
-import { ListVolunteersComponent } from './volunteers/listVolunteers/listVolunteers.component';
-import { FormCadVolunteersResolverGuard } from './../shared/guards/form-cad-volunteers-resolver.guard';
-import { FiltrosComponent } from '../app-forms/volunteersForm/filtros/filtros.component';
-import { FormCadComponent } from '../app-forms/volunteersForm/form-cad/form-cad.component';
+import { MyPageAdminUsersComponent } from '../adminUsers/myPageAdminUsers/myPageAdminUsers.component';
+import { ListVolunteersComponent } from '../adminUsers/volunteers/listVolunteers/listVolunteers.component';
 import { FormCadAdminUsersComponent } from '../app-forms/adminUsersForm/formCadAdminUsers/formCadAdminUsers.component';
 import { FormCadMissionariesComponent } from '../app-forms/missionariesForm/formCadMissionaries/formCadMissionaries.component';
+import { FiltrosComponent } from '../app-forms/volunteersForm/filtros/filtros.component';
+import { FormCadComponent } from '../app-forms/volunteersForm/form-cad/form-cad.component';
+import { FormCadVolunteersResolverGuard } from './guards/form-cad-volunteers-resolver.guard';
+import { MyPageAllUsersComponent } from './myPageAllUsers/myPageAllUsers.component';
+import { AllUsersResolverGuard } from './guards/all-users-resolver.guard';
+import { MyPageAllUsersResolverGuard } from './guards/my-page-all-users-resolver.guard';
 
 const routes: Routes = [];
 
@@ -22,8 +25,18 @@ const routes: Routes = [];
       {
         path: 'sideBar',
         component: SideBarComponent,
-         canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         children: [
+          {
+            path: 'myPageAllUsers/:id/:userTypeInList',
+            component: MyPageAllUsersComponent,
+            resolve: {
+              loggeInUserType: AllUsersResolverGuard,
+              user: AllUsersResolverGuard,
+              userTypeInList: MyPageAllUsersResolverGuard,
+            },
+            canActivate: [AuthGuard],
+          },
           //ADMINISTRADORES
           {
             path: 'Dashboard',
@@ -35,14 +48,6 @@ const routes: Routes = [];
             component: ListAdminUsersComponent,
             canActivate: [AuthGuard],
           },
-          {
-            path: 'myPageAdminUsers/:id',
-            component: MyPageAdminUsersComponent,
-            resolve: {
-              // voluntary: FormCadVolunteersResolverGuard,
-            },
-            canActivate: [AuthGuard],
-          },
 
           //VOLUNTÁRIOS
           {
@@ -50,14 +55,6 @@ const routes: Routes = [];
             component: ListVolunteersComponent,
             canActivate: [AuthGuard],
           },
-          // {
-          //   path: 'voluntary/:id',
-          //   component: MypageComponent,
-          //   canActivate: [AuthGuard],
-          //   resolve: {
-          //     voluntary: FormCadVolunteersResolverGuard,
-          //   },
-          // },
 
           //MISISONÁRIOS
           {
@@ -65,15 +62,6 @@ const routes: Routes = [];
             component: ListMissionariesComponent,
             canActivate: [AuthGuard],
           },
-          {
-            path: 'myPageMissionaries/:id',
-            component: FormCadMissionariesComponent,
-            canActivate: [AuthGuard],
-            resolve: {
-              // voluntary: FormCadVolunteersResolverGuard,
-            },
-          },
-         
 
           //FORMULÁRIOS
 
@@ -135,4 +123,4 @@ const routes: Routes = [];
   ],
   exports: [RouterModule],
 })
-export class AdminUsersRoutingModule {}
+export class SharedRoutingModule {}
