@@ -297,7 +297,7 @@
                   {{ Missionary.endereco.cidade }} - {{ Missionary.endereco.uf }},
                 </small>
                 <small class="text-white text infoCacec">
-                  {{ Voluntary.telefone }}
+                  {{ Missionary.telefone }}
                 </small>
               </div>
             </div>
@@ -391,17 +391,21 @@
         </div>
         <div class="button mb-5 mt-5 d-flex justify-content-end">
           <button type="submit" class="btn btn-success btn-lg"
-            [routerLink]="['/sideBar/formCadVoluntary',Voluntary._id]">
+            [routerLink]="['/sideBar/formCadMissionaries',Missionary._id]">
             Atualizar
           </button>
         </div>
+
+
         <footer class="blockquote-footer">
-          <cite title="Título da fonte">Data de Cadastro:{{ Voluntary.dataCad }}
+          <cite title="Título da fonte">Data de Cadastro:{{ Missionary.dataCad }}
           </cite>
         </footer>
       </blockquote>
     </div>
   </div>
+
+
 
 
 </div>

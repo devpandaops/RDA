@@ -13,7 +13,10 @@ import { VolunteersService } from '../../services/volunteers.service';
   providedIn: 'root',
 })
 export class FormCadVolunteersResolverGuard implements Resolve<VoluntaryModel> {
-  constructor(private voluntaryService: VolunteersService) { }
+  constructor(private voluntaryService: VolunteersService) {
+   
+
+  }
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -71,15 +74,15 @@ export class FormCadVolunteersResolverGuard implements Resolve<VoluntaryModel> {
       voluntarioProfissao: {
         especialidade: '',
         dicasEspecialidade: '',
-        servicoOferecido:{
-          servicoOferecidoAtendimentos:false,
-          servicoOferecidoConsultorias:false,
-          servicoOferecidoPalestras:false,
-          servicoOferecidoGruposDeOrientacaoWhatsapp:false,
-          servicoOferecidoEscreverConteudos:false,
-          servicoOferecidoOutros:false,
-          servicoOferecidoOutrosDescrito:'',
-          }
+        servicoOferecido: {
+          servicoOferecidoAtendimentos: false,
+          servicoOferecidoConsultorias: false,
+          servicoOferecidoPalestras: false,
+          servicoOferecidoGruposDeOrientacaoWhatsapp: false,
+          servicoOferecidoEscreverConteudos: false,
+          servicoOferecidoOutros: false,
+          servicoOferecidoOutrosDescrito: '',
+        },
       },
 
       voluntarioIntercessor: {

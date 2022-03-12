@@ -46,7 +46,7 @@ export class VolunteersService {
         `${this.API}`,
         toFormDataVoluntary(voluntary)
       )
-      .pipe(retry(2), 
+      .pipe(retry(1), 
       catchError((err) => {
         console.log(err)
         return err
@@ -65,7 +65,7 @@ export class VolunteersService {
         `${this.API}/${voluntary._id}`,
         toFormDataVoluntary(voluntary)
       )
-      .pipe(retry(2), 
+      .pipe(retry(1), 
       // catchError(error => this.handleError(error))
       )
       .pipe(take(1));
@@ -84,7 +84,7 @@ export class VolunteersService {
   public deleteVolunteer(voluntary: VoluntaryModel) {
     return this.http
       .delete<VoluntaryModel>(`${this.API}/${voluntary._id}`, this.httpOptions)
-      .pipe(retry(1), 
+      .pipe(retry(2), 
       // catchError(error => this.handleError(error))
       )
       .pipe(take(1));

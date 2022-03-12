@@ -43,7 +43,7 @@ export class MissionariesService {
         `${this.API}`,
         toFormDataMissionary(missionary)
       )
-      .pipe(retry(2), 
+      .pipe(retry(1), 
       catchError((err) => {
         console.log(err)
         return err
@@ -56,13 +56,14 @@ export class MissionariesService {
   public updateMissionariesID(
     missionary: MissionaryModel, id: String
   ): Observable<MissionaryModel> {
-    console.log( "id do missionário",id)
+    console.log("🚀 ~ file: missionaries.service.ts ~ line 59 ~ MissionariesService ~ id", id)
+    
     return this.http
       .put<MissionaryModel>(
         `${this.API}/${missionary._id}`,
         toFormDataMissionary(missionary)
       )
-      .pipe(retry(2), 
+      .pipe(retry(1), 
       // catchError(error => this.handleError(error))
       )
       .pipe(take(1));
@@ -81,7 +82,7 @@ export class MissionariesService {
   public deleteMissionary(missionary: MissionaryModel) {
     return this.http
       .delete<MissionaryModel>(`${this.API}/${missionary._id}`, this.httpOptions)
-      .pipe(retry(1), 
+      .pipe(retry(2), 
       // catchError(error => this.handleError(error))
       )
       .pipe(take(1));

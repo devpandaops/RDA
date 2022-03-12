@@ -1,3 +1,295 @@
-<p>
-  formCadMissionaries works!
-</p>
+<div class="container mt-5 mb-5">
+  <div [@torrada]="alertState" class="alert">
+    <div [ngClass]="typeStyle()" class="borderAlert"></div>
+    <p id="text"></p>
+    <button (click)="toggle('hide')" class="closebtn">x</button>
+  </div>
+  <h1 *ngIf="!Missionary._id">Novo Cadastro</h1>
+  <h1 *ngIf="Missionary._id">Editar Cadastro</h1>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <fieldset class="form-group mb-2">
+      <h4 class="mb-4 ms-4">Missionário</h4>
+      <div class="row d-flex-wrap m-3 mb-4">
+        <div class="col form-floating">
+          <input type="text" id="inputName" class="form-control" formControlName="nome"
+            placeholder="Informe Seu nome completo:" [ngClass]="applyCss('nome')" />
+          <label class="ms-3" for="inputName">Nome Completo</label>
+          <div *ngIf="nome.touched && nome.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="nome.errors.required">
+              Nome é obrigatório.
+            </small>
+            <small class="text-formInvalid" *ngIf="nome.errors.minlength">
+              Nome deve ter no mínimo 3 caracters.
+            </small>
+            <small class="text-formInvalid" *ngIf="nome.errors.maxlength">
+              Nome deve ter no máximo 100 caracters.
+            </small>
+          </div>
+        </div>
+        <div class="form-floating col">
+          <input [ngClass]="applyCss('cpf')" mask="000.000.000-00" type="text" id="CPFMissionario" class="form-control"
+            formControlName="cpf" placeholder="informe seu CPF" />
+          <label class="ms-3" for="CPFMissionario">Seu CPF</label>
+        </div>
+        <div class="form-floating col">
+          <input type="date" id="inputLastname" formControlName="dataNascimento" class="form-control"
+            [ngClass]="applyCss('dataNascimento')" />
+          <label class="ms-3 ms-2" for="inputLastname">Nascimento</label>
+          <div *ngIf="dataNascimento.touched && dataNascimento.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="dataNascimento.errors.required">
+              A data de nascimento é obrigatório.
+            </small>
+          </div>
+        </div>
+        <div class="col-auto radioSexo d-flex flex-column flex-wrap">
+          <div class="mb-2">
+            <div class="custom-control custom-radio">
+              <input class="form-check-input me-2" type="radio" formControlName="sexo" name="sexo" id="masculino"
+                value="M" [ngClass]="applyCss('sexo')" />
+              <label class="" class="form-check-label" for="masculino">
+                Masculino
+              </label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input class="form-check-input me-2" type="radio" formControlName="sexo" name="sexo" id="feminino"
+                value="F" [ngClass]="applyCss('sexo')" />
+              <label class="" class="form-check-label" for="feminino">
+                Feminino
+              </label>
+            </div>
+          </div>
+          <div *ngIf="sexo.touched && sexo.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="sexo.errors.required">
+              Este campo é obrigatório, Selecione uma das opções
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <fieldset class="fieldsetIF">
+        <p class="ms-4">Seu endereço</p>
+        <div formGroupName="endereco">
+          <div class="row m-3 mb-4">
+            <div class="form-floating campo form-group col">
+              <input type="text" class="form-control" id="rua" formControlName="rua"
+                placeholder="Informe o nome da sua rua" />
+              <label class="ms-3" class="ms-3" for="rua">Rua</label>
+            </div>
+            <div class="form-floating campo form-group col">
+              <input type="number" class="form-control" id="inputNumberC" formControlName="numero" placeholder="nº" />
+              <label class="ms-3" class="ms-3" for="inputNumberC">Número</label>
+            </div>
+            <div class="form-floating campo form-group col">
+              <input type="text" class="form-control" formControlName="bairro" id="inputBairro"
+                placeholder="Informe seu Bairro:" />
+              <label class="ms-3" class="ms-3" for="inputBairro">Bairro</label>
+            </div>
+          </div>
+
+          <div class="row m-3 mb-4">
+            <div class="form-floating campo form-group col">
+              <input type="text" class="form-control" id="inputCity" formControlName="cidade"
+                placeholder="Informe sua cidade:" />
+              <label class="ms-3" class="ms-3" for="inputCity">Cidade</label>
+            </div>
+            <div class="campo form-floating form-group col">
+              <input type="text" class="form-control" id="inputComple" formControlName="complemento"
+                placeholder="Casa / Apt" />
+              <label class="ms-3" for="inputComple">Complemento</label>
+            </div>
+            <div class="campo form-floating col">
+              <select formControlName="uf" id="inputEstado" class="form-select">
+                <option selected value="null">Escolha Estado...</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+              </select>
+              <label class="ms-3" for="inputEstado">Estado</label>
+            </div>
+            <div class="form-floating form-group col height-auto-responsive">
+              <input [ngClass]="applyCss('endereco.CEP')" type="cep" class="form-control" formControlName="CEP"
+                id="inputCEP" placeholder="Informe seu CEP" mask="00000-000" />
+              <label class="ms-3" for="inputCEP">CEP</label>
+              <div *ngIf="CEP.touched && nome.errors && !CEP.valid">
+                <small class="text-formInvalid"> CEP inválido. </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="row m-3 mb-4">
+        <div class="form-floating form-group col">
+          <input [ngClass]="applyCss('telefone')" formControlName="telefone" type="tel" class="form-control"
+            prefix="+55" mask=" (00) 00000-0000" id="inputTel" placeholder="Informe telefone para Contato" />
+          <label class="ms-3" for="inputTel">Telefone Celular</label>
+          <div *ngIf="telefone.touched && telefone.errors" class="mt-1 d-flex flex-column">
+            <small class="text-formInvalid" *ngIf="telefone.errors.required">
+              Não esqueça de informar o seu telefone celular!
+            </small>
+            <small class="text-formInvalid" *ngIf="!telefone.valid">
+              Telefone inválido
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group form-floating col">
+          <input [ngClass]="applyCss('email')" formControlName="email" type="email" class="form-control" id="inputEmail"
+            placeholder="Informe seu E-mail" />
+          <label class="ms-3" for="inputEmail">E-mail</label>
+          <div *ngIf="email.touched && email.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="email.errors.required">
+              Não se esqueça de informar seu E-mail
+            </small>
+            <small class="text-formInvalid" *ngIf="email.errors.email">
+              Não se esqueça, o email tem que ser válido!
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group form-floating col" *ngIf="!Missionary._id">
+          <input [ngClass]="applyCss('password')" formControlName="password" autocomplete="off" type="password"
+            class="form-control" id="imputPassword" placeholder="Informe sua senha" />
+          <label class="ms-3" for="imputPassword">Crie a sua senha</label>
+          <div *ngIf="password.touched && password.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="password.errors.required">
+              Senha é obrigatória.
+            </small>
+            <small class="text-formInvalid" *ngIf="password.errors.minlength">
+              Senha deve ter no mínimo 8 caracters.
+            </small>
+          </div>
+        </div>
+        <!-- <h1>{{Missionary.typeUser}}</h1> -->
+        <div class="form-group form-floating col" *ngIf="!Missionary._id">
+          <input [ngClass]="applyCss('password2')" autocomplete="off" formControlName="password2" type="password"
+            class="form-control" id="inputPassword2" placeholder="Informe sua senha" />
+          <label class="ms-3" for="inputPassword2">Confirme a senha</label>
+          <div *ngIf="password2.touched && password2.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="password2.errors.required">
+              Confirme a sua senha.
+            </small>
+            <small class="text-formInvalid" *ngIf="password2.errors.passwordsDoNotCoincide">
+              As senhas não coincidem.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="row m-3 mb-4">
+        <div class="form-floating form-group col">
+          <select formControlName="vinculo" id="vinculo" class="form-select">
+            <option value="missionarioVoluntario"> Missionário Voluntário</option>
+            <option value="missionarioRadical">Missionário Radical</option>
+            <option value="missionarioEfetivo">Missionário Efetivo</option>
+            <option value="missionarioEmFormacao">Missionário em Formação</option>
+          </select>
+          <label class="ms-3" for="vinculo">Vínculo</label>
+        </div>
+
+        <div class="form-floating form-group col">
+          <input [ngClass]="applyCss('projeto')" formControlName="projeto" type="text" class="form-control"
+            id="inputProf" placeholder="Informe seu Projeto de atuação" />
+          <label class="ms-3" for="inputProf">Projeto</label>
+          <div *ngIf="projeto.touched && projeto.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="projeto.errors.required">
+              Não se esqueça de informar o projeto em que está atuando
+            </small>
+          </div>
+        </div>
+
+        <div class="form-floating form-group col">
+          <select formControlName="regiao" id="regiao" class="form-select">
+            <option value="regiaoCentroOeste">Região Centro-Oeste</option>
+            <option value="regiaoSudeste">Região Sudeste</option>
+            <option value="regiaoNordeste">Região Nordeste</option>
+            <option value="regiaoNorte">Região Norte</option>
+            <option value="regiaoSul">Região Sul</option>
+          </select>
+          <label class="ms-3" for="regiao">Região</label>
+        </div>
+      </div>
+      <div class="row m-3 fieldsetIF mb-4">
+        <div class="form-floating form-group col">
+          <input [ngClass]="applyCss('igreja')" formControlName="igreja" type="text" class="form-control"
+            id="inputIgreja" placeholder="Informe o nome da sua igreja" />
+          <label class="ms-3" for="inputIgreja">igreja</label>
+          <div *ngIf="igreja.touched && igreja.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="igreja.errors.required">
+              Não se esqueça de informar o nome da sua Igreja
+            </small>
+          </div>
+        </div>
+        <div class="form-floating form-group col">
+          <input [ngClass]="applyCss('pastor')" formControlName="pastor" type="text" class="form-control"
+            id="inputPastor" placeholder="Informe o nome do seu Pastor" />
+          <label class="ms-3" for="inputPastor">Pastor</label>
+          <div *ngIf="pastor.touched && pastor.errors" class="mt-1">
+            <small class="text-formInvalid" *ngIf="pastor.errors.required">
+              Não se esqueça de informar o nome do seu pastor
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="row m-3 mb-4">
+        <div class="col d-flex flex-wrap flex-column">
+          <div class="col">
+            <input type="file" class="form-control" [ngClass]="applyCss('imgFilePrincipal')"
+              (change)="onFileSelect($event, 'imgFilePrincipal')" />
+            <p class="labelTypeFile">Adicione a sua foto de perfil</p>
+          </div>
+          <div *ngIf="imgFilePrincipalHaveFile && imgFilePrincipal.errors" class="d-flex flex-wrap flex-column mt-1">
+            <small class="text-formInvalid" *ngIf="imgFilePrincipal.errors.notImageFile">
+              O arquivo selecionado não é uma foto.
+            </small>
+            <small class="text-formInvalid" *ngIf="imgFilePrincipal.errors.veryLargeFile">
+              A imagem selecionada é muito grande, adicione uma foto que tenha
+              no máximo 350kb.
+            </small>
+          </div>
+          <div *ngIf="imgFilePrincipal.touched && imgFilePrincipal.errors" class="d-flex flex-wrap flex-column mt-1">
+            <small class="text-formInvalid" *ngIf="imgFilePrincipal.errors.required">
+              Não esqueça de adicionar uma foto sua;
+            </small>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <hr />
+
+    <div class="d-flex justify-content-center mt-4">
+      <button type="submit" class="btn btn-success btn-lg pr-5 pl-5" *ngIf="Missionary._id">
+        <span *ngIf="!this.dadoCarregado" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        Salvar dados Alterados
+      </button>
+      <button type="submit" class="btn btn-success btn-lg pr-5 pl-5" *ngIf="!Missionary._id">
+        <span *ngIf="!this.dadoCarregado" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        Cadastrar Missionário
+      </button>
+    </div>
+  </form>
+</div>

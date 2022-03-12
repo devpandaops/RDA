@@ -6,17 +6,17 @@ import { MissionaryModel } from 'src/app/shared/entities/missionary.model';
 export function toFormDataMissionary<T>(formValue: MissionaryModel):FormData{
   const formData = new FormData();
 
-  if (formValue.imgMissionaries != null) {
+  if (formValue.imgFilePrincipal != null) {
     formData.append(
-      'imgMissionaries',
-      formValue.imgMissionaries[0],
-      formValue.imgMissionaries.name
+      'imgFilePrincipal',
+      formValue.imgFilePrincipal[0],
+      formValue.imgFilePrincipal.name
     );
   }
 
   const formulario = formValue;
   delete formulario._id;
-  delete formulario.imgMissionaries;
+  delete formulario.imgFilePrincipal;
 
   const options = {
     indices: false,

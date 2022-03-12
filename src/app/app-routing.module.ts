@@ -18,9 +18,9 @@ const routes: Routes = [];
 
 @NgModule({
   imports: [
+    MissionariesRoutingModule,
     VolunteersRoutingModule,
     AppFormsRoutingModule,
-    MissionariesRoutingModule,
     AdminUsersRoutingModule,
     SharedRoutingModule,
     RouterModule.forRoot(

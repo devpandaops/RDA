@@ -7,6 +7,7 @@ import { Erro404Component } from './../shared/erro404/erro404.component';
 import { FormCadVolunteersResolverGuard } from './../shared/guards/form-cad-volunteers-resolver.guard';
 import { FiltrosComponent } from './volunteersForm/filtros/filtros.component';
 import { FormCadComponent } from './volunteersForm/form-cad/form-cad.component';
+import { FormCadMissionariesResolverGuard } from '../shared/guards/form-cad-missionaries-resolver.guard';
 
 const routes: Routes = [];
 
@@ -29,21 +30,21 @@ const routes: Routes = [];
         },
       },
 
-      {
-        path: 'formCadMissionaries',
-        component: FormCadMissionariesComponent,
-        resolve: {
-          //  voluntary: FormCadAdminUsersResolverGuard,
-        },
-      },
-      {
-        path: 'formCadMissionaries/:id',
-        component: FormCadMissionariesComponent,
-        canActivate: [AuthGuard],
-        resolve: {
-          // voluntary: FormCadAdminUsersResolverGuard,
-        },
-      },
+      // {
+      //   path: 'formCadMissionaries',
+      //   component: FormCadAdminUsersComponent,
+      //   resolve: {
+      //      missionary: FormCadMissionariesResolverGuard,
+      //   },
+      // },
+      // {
+      //   path: 'formCadMissionaries/:id',
+      //   component: FormCadMissionariesComponent,
+      //   canActivate: [AuthGuard],
+      //   resolve: {
+      //     missionary: FormCadMissionariesResolverGuard,
+      //   },
+      // },
 
       {
         path: 'formCadVoluntary',

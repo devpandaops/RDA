@@ -12,6 +12,7 @@ import { FiltrosComponent } from '../app-forms/volunteersForm/filtros/filtros.co
 import { FormCadComponent } from '../app-forms/volunteersForm/form-cad/form-cad.component';
 import { FormCadAdminUsersComponent } from '../app-forms/adminUsersForm/formCadAdminUsers/formCadAdminUsers.component';
 import { FormCadMissionariesComponent } from '../app-forms/missionariesForm/formCadMissionaries/formCadMissionaries.component';
+import { FormCadMissionariesResolverGuard } from '../shared/guards/form-cad-missionaries-resolver.guard';
 
 const routes: Routes = [];
 
@@ -97,7 +98,7 @@ const routes: Routes = [];
             path: 'formCadMissionaries',
             component: FormCadMissionariesComponent,
             resolve: {
-              //  voluntary: FormCadAdminUsersResolverGuard,
+                missinary: FormCadMissionariesResolverGuard,
             },
           },
           {
@@ -105,7 +106,7 @@ const routes: Routes = [];
             component: FormCadMissionariesComponent,
             canActivate: [AuthGuard],
             resolve: {
-              // voluntary: FormCadAdminUsersResolverGuard,
+              missinary: FormCadMissionariesResolverGuard,
             },
           },
 

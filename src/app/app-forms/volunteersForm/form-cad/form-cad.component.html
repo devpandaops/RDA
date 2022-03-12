@@ -9,12 +9,12 @@
   <h1 *ngIf="Voluntary._id">Editar Cadastro</h1>
   <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <fieldset class="form-group mb-2">
-      <h4 class="mb-4 ml-4">Voluntário</h4>
+      <h4 class="mb-4 ms-4">Voluntário</h4>
       <div class="row d-flex-wrap m-3 mb-4">
         <div class="col form-floating">
           <input type="text" id="inputName" class="form-control" formControlName="nome"
             placeholder="Informe Seu nome completo:" [ngClass]="applyCss('nome')" />
-          <label class="ml-5" for="inputName">Nome Completo</label>
+          <label class="ms-3" for="inputName">Nome Completo</label>
           <div *ngIf="nome.touched && nome.errors" class="mt-1">
             <small class="text-formInvalid" *ngIf="nome.errors.required">
               Nome é obrigatório.
@@ -30,12 +30,12 @@
         <div class="form-floating col">
           <input [ngClass]="applyCss('CPF')" mask="000.000.000-00" type="text" id="CPFVoluntario" class="form-control"
             formControlName="CPF" placeholder="informe seu CPF" />
-          <label class="ml-5" for="inputName">Seu CPF</label>
+          <label class="ms-3" for="CPFVoluntario">Seu CPF</label>
         </div>
         <div class="form-floating col">
           <input type="date" id="inputLastname" formControlName="dataNascimento" class="form-control"
             [ngClass]="applyCss('dataNascimento')" />
-          <label class="ml-3 ml-2" for="inputLastname">Nascimento</label>
+          <label class="ms-3 ms-2" for="inputLastname">Nascimento</label>
           <div *ngIf="dataNascimento.touched && dataNascimento.errors" class="mt-1">
             <small class="text-formInvalid" *ngIf="dataNascimento.errors.required">
               A data de nascimento é obrigatório.
@@ -45,14 +45,14 @@
         <div class="col-auto radioSexo d-flex flex-column flex-wrap">
           <div class="mb-2">
             <div class="custom-control custom-radio">
-              <input class="form-check-input mr-2" type="radio" formControlName="sexo" name="sexo" id="masculino"
+              <input class="form-check-input me-2" type="radio" formControlName="sexo" name="sexo" id="masculino"
                 value="M" [ngClass]="applyCss('sexo')" />
               <label class="" class="form-check-label" for="masculino">
                 Masculino
               </label>
             </div>
             <div class="custom-control custom-radio">
-              <input class="form-check-input mr-2" type="radio" formControlName="sexo" name="sexo" id="feminino"
+              <input class="form-check-input me-2" type="radio" formControlName="sexo" name="sexo" id="feminino"
                 value="F" [ngClass]="applyCss('sexo')" />
               <label class="" class="form-check-label" for="feminino">
                 Feminino
@@ -71,16 +71,16 @@
           <div class="form-floating campo form-group col">
             <input type="text" class="form-control" id="rua" formControlName="rua"
               placeholder="Informe o nome da sua rua" />
-            <label class="ml-3" class="ml-3" for="rua">Rua</label>
+            <label class="ms-3" class="ms-3" for="rua">Rua</label>
           </div>
           <div class="form-floating campo form-group col">
             <input type="number" class="form-control" id="inputNumberC" formControlName="numero" placeholder="nº" />
-            <label class="ml-3" class="ml-3" for="inputNumberC">Número</label>
+            <label class="ms-3" class="ms-3" for="inputNumberC">Número</label>
           </div>
           <div class="form-floating campo form-group col">
             <input type="text" class="form-control" formControlName="bairro" id="inputBairro"
               placeholder="Informe seu Bairro:" />
-            <label class="ml-3" class="ml-3" for="inputBairro">Bairro</label>
+            <label class="ms-3" class="ms-3" for="inputBairro">Bairro</label>
           </div>
         </div>
 
@@ -88,12 +88,12 @@
           <div class="form-floating campo form-group col">
             <input type="text" class="form-control" id="inputCity" formControlName="cidade"
               placeholder="Informe sua cidade:" />
-            <label class="ml-3" class="ml-3" for="inputCity">Cidade</label>
+            <label class="ms-3" class="ms-3" for="inputCity">Cidade</label>
           </div>
           <div class="campo form-floating form-group col">
             <input type="text" class="form-control" id="inputComple" formControlName="complemento"
               placeholder="Casa / Apt" />
-            <label class="ml-3" for="inputComple">Complemento</label>
+            <label class="ms-3" for="inputComple">Complemento</label>
           </div>
           <div class="campo form-floating col">
             <select formControlName="uf" id="inputEstado" class="form-select">
@@ -126,12 +126,12 @@
               <option value="SE">Sergipe</option>
               <option value="TO">Tocantins</option>
             </select>
-            <label class="ml-3" for="inputEstado">Estado</label>
+            <label class="ms-3" for="inputEstado">Estado</label>
           </div>
           <div class="form-floating form-group col height-auto-responsive">
             <input [ngClass]="applyCss('endereco.CEP')" type="cep" class="form-control" formControlName="CEP"
               id="inputCEP" placeholder="Informe seu CEP" mask="00000-000" />
-            <label class="ml-3" for="inputCEP">CEP</label>
+            <label class="ms-3" for="inputCEP">CEP</label>
             <div *ngIf="CEP.touched && nome.errors && !CEP.valid">
               <small class="text-formInvalid"> CEP inválido. </small>
             </div>
@@ -142,7 +142,7 @@
         <div class="form-floating form-group col">
           <input [ngClass]="applyCss('profissao')" formControlName="profissao" type="text" class="form-control"
             id="inputProf" placeholder="Informe sua profissão" />
-          <label class="ml-3" for="inputProf">Profissão</label>
+          <label class="ms-3" for="inputProf">Profissão</label>
           <div *ngIf="profissao.touched && profissao.errors" class="mt-1">
             <small class="text-formInvalid" *ngIf="profissao.errors.required">
               Não se esqueça de informar sua Profissão
@@ -153,7 +153,7 @@
         <div class="form-floating form-group col">
           <input [ngClass]="applyCss('telefone')" formControlName="telefone" type="tel" class="form-control"
             prefix="+55" mask=" (00) 00000-0000" id="inputTel" placeholder="Informe telefone para Contato" />
-          <label class="ml-3" for="inputTel">Telefone Celular</label>
+          <label class="ms-3" for="inputTel">Telefone Celular</label>
           <div *ngIf="telefone.touched && telefone.errors" class="mt-1 d-flex flex-column">
             <small class="text-formInvalid" *ngIf="telefone.errors.required">
               Não esqueça de informar o seu telefone celular!
@@ -166,7 +166,7 @@
         <div class="form-floating form-group col">
           <input [ngClass]="applyCss('telefoneFx')" type="tel" class="form-control" formControlName="telefoneFx"
             id="telefoneFx" placeholder="Informe telefone para Contato" prefix="+55" mask="(00) 0000-0000" />
-          <label class="ml-3" for="telefoneFx">Telefone fixo</label>
+          <label class="ms-3" for="telefoneFx">Telefone fixo</label>
           <div *ngIf="telefoneFx.touched && nome.errors && !telefoneFx.valid" class="mt-1">
             <small class="text-formInvalid"> Telefone inválido. </small>
           </div>
@@ -182,7 +182,7 @@
             <option value="Divorciado">Divorciado</option>
             <option value="Viúvo">Viúvo</option>
           </select>
-          <label class="ml-3" for="inputEstadoCivil">Estado Civil</label>
+          <label class="ms-3" for="inputEstadoCivil">Estado Civil</label>
         </div>
         <div class="col d-flex flex-wrap flex-column">
           <div class="col">
@@ -212,7 +212,7 @@
         <div class="form-group form-floating col">
           <input [ngClass]="applyCss('email')" formControlName="email" type="email" class="form-control" id="inputEmail"
             placeholder="Informe seu E-mail" />
-          <label class="ml-3" for="inputEmail">E-mail</label>
+          <label class="ms-3" for="inputEmail">E-mail</label>
           <div *ngIf="email.touched && email.errors" class="mt-1">
             <small class="text-formInvalid" *ngIf="email.errors.required">
               Não se esqueça de informar seu E-mail
@@ -226,7 +226,7 @@
         <div class="form-group form-floating col" *ngIf="!this.Voluntary._id">
           <input [ngClass]="applyCss('password')" formControlName="password" autocomplete="off" type="password"
             class="form-control" id="imputPassword" placeholder="Informe sua senha" />
-          <label class="ml-3" for="imputPassword">Crie a sua senha</label>
+          <label class="ms-3" for="imputPassword">Crie a sua senha</label>
           <div *ngIf="password.touched && password.errors" class="mt-1">
             <small class="text-formInvalid" *ngIf="password.errors.required">
               Senha é obrigatória.
@@ -239,7 +239,7 @@
         <div class="form-group form-floating col" *ngIf="!this.Voluntary._id">
           <input [ngClass]="applyCss('password2')" autocomplete="off" formControlName="password2" type="password"
             class="form-control" id="inputPassword2" placeholder="Informe sua senha" />
-          <label class="ml-3" for="inputPassword2">Confirme a senha</label>
+          <label class="ms-3" for="inputPassword2">Confirme a senha</label>
           <div *ngIf="password2.touched && password2.errors" class="mt-1">
             <small class="text-formInvalid" *ngIf="password2.errors.required">
               Confirme a sua senha.
@@ -256,7 +256,7 @@
         <div class="form-floating col">
           <input [ngClass]="applyCss('nomeIg')" formControlName="nomeIg" type="text" id="inputNameIg"
             class="form-control" placeholder="Informe o nome da sua Igreja:" />
-          <label class="ml-3" for="inputNameIg">Nome da Igreja</label>
+          <label class="ms-3" for="inputNameIg">Nome da Igreja</label>
           <div *ngIf="nomeIg.touched && nomeIg.errors && !nomeIg.valid" class="mt-1">
             <small class="text-formInvalid" *ngIf="nomeIg.errors.required">
               Precisamos saber qual a sua igreja!
@@ -266,7 +266,7 @@
         <div class="form-floating col">
           <input [ngClass]="applyCss('pastor')" type="text" formControlName="pastor" id="inputNamePr"
             class="form-control" placeholder="Informe o nome do seu Pastor" />
-          <label class="ml-3" for="inputNamePr">Nome do Pastor</label>
+          <label class="ms-3" for="inputNamePr">Nome do Pastor</label>
           <div *ngIf="pastor.touched && pastor.errors && !pastor.valid" class="mt-1">
             <small class="text-formInvalid" *ngIf="pastor.errors.required">
               Informe o nome do seu Pastor;
@@ -276,7 +276,7 @@
       </div>
     </fieldset>
     <fieldset formGroupName="typeVoluntary" class="d-flex flex-column" [ngClass]="applyCssGroup('typeVoluntary')">
-      <h4 class="mb-4 ml-4">Desejo participar da rede de apoio:</h4>
+      <h4 class="mb-4 ms-4">Desejo participar da rede de apoio:</h4>
 
       <div class="form-check form-switch">
         <input class="form-check-input px-3 py-2" type="checkbox" id="chekbox1" formControlName="chekbox1Profissao" />
@@ -312,7 +312,7 @@
     </fieldset>
     
     <fieldset class="mt-2 fieldsetIF pb-4" *ngIf="chekbox1Profissao.value" formGroupName="voluntarioProfissao">
-      <h5 class="mb-4 ml-4">
+      <h5 class="mb-4 ms-4">
         Para quem deseja atuar através da sua Profissão:
       </h5>
      
@@ -329,7 +329,7 @@
       
         <div formGroupName="servicoOferecido">
           <div class="form-check form-switch col">
-            <p style="font-weight: 500" class="mr-5 mt-3">
+            <p style="font-weight: 500" class="me-5 mt-3">
               O que pode oferecer aos missionários?
             </p>
             <div>
@@ -377,7 +377,7 @@
         <label for="floatingInput">Como você desenvolve o ministério de oração/intercessão na sua igreja?</label>
       </div>
       <div class="form-check form-switch col">
-        <p style="font-weight: 500" class="mr-5 mt-3">
+        <p style="font-weight: 500" class="me-5 mt-3">
           Você tem habilidades na utilização do WhatsApp e Telegram?
         </p>
         <div>
@@ -396,7 +396,7 @@
     </fieldset>
 
     <fieldset class="mt-2 fieldsetIF pb-5" *ngIf="chekbox3Cuidador.value" formGroupName="aconselhamentoBiblico">
-      <!-- <h5 class="mb-4 ml-4">Somente para Cuidadores:</h5> -->
+      <!-- <h5 class="mb-4 ms-4">Somente para Cuidadores:</h5> -->
 
       <div class="row m-3 mb-4">
         <div class="form-floating col height-auto-responsive width-auto-responsive">
@@ -407,7 +407,7 @@
             desenvolve na
             igreja ou denominação?</label>
         </div>
-        <p style="font-weight: 500" class="mr-5 mt-3">
+        <p style="font-weight: 500" class="me-5 mt-3">
           Possui curso de aconselhamento bíblico?
         </p>
         <div class="form-check form-switch col-auto">
@@ -467,14 +467,14 @@
       </div>
     </fieldset>
     <fieldset class="mt-2 fieldsetIF pb-5" *ngIf="chekbox4CasaDescanso.value">
-      <h5 class="mb-4 ml-4">
+      <h5 class="mb-4 ms-4">
         Somente para quem deseja disponibilizar local de descanso
       </h5>
 
       <fieldset formGroupName="localDescanso" class="mb-2 d-flex flex-column deletingMarginsFromMobile"
         [ngClass]="applyCssGroup('localDescanso.typeLocalDescanso')">
         <div formGroupName="typeLocalDescanso">
-          <h5 class="mb-4 ml-4">Local de descanso</h5>
+          <h5 class="mb-4 ms-4">Local de descanso</h5>
           <div class="form-check form-switch">
             <input class="form-check-input px-3 py-2" type="checkbox" id="casaDePraia" formControlName="casaDePraia" />
             <label class="form-check-label" for="casaDePraia">Casa de Praia</label>
@@ -506,13 +506,13 @@
       </fieldset>
 
       <fieldset class="mb-2" formGroupName="localDescanso">
-        <h5 class="mb-4 ml-4">Dados</h5>
+        <h5 class="mb-4 ms-4">Dados</h5>
         <div class="row d-flex-wrap m-3 mb-4">
           <div class="col form-floating">
             <input [ngClass]="applyCss('localDescanso.nomeLocalDescanso')" type="text" id="nomeLocalDescanso"
               class="form-control" formControlName="nomeLocalDescanso"
               placeholder="Informe o nome do local de descanso" />
-            <label class="ml-5" for="inputName">Nome do local</label>
+            <label class="ms-3" for="inputName">Nome do local</label>
             <div *ngIf="
                 nomeLocalDescanso.touched &&
                 nomeLocalDescanso.errors &&
@@ -527,7 +527,7 @@
             <input [ngClass]="applyCss('localDescanso.CNPJLocalDescanso')" mask="00.000.000/0000-00" type="text"
               id="CNPJLocalDescanso" class="form-control" formControlName="CNPJLocalDescanso"
               placeholder="se tiver, informe seu CNPJ" />
-            <label class="ml-5" for="CNPJLocalDescanso">CNPJ</label>
+            <label class="ms-3" for="CNPJLocalDescanso">CNPJ</label>
             <div *ngIf="
                 CNPJLocalDescanso.touched &&
                 CNPJLocalDescanso.errors &&
@@ -549,7 +549,7 @@
                   )
                 " type="text" class="form-control" id="ruaLocalDescanso" formControlName="ruaLocalDescanso"
                 placeholder="Informe a rua do estabelecimento" />
-              <label class="ml-3" class="ml-3" for="ruaLocalDescanso">Endereço</label>
+              <label class="ms-3" class="ms-3" for="ruaLocalDescanso">Endereço</label>
               <div *ngIf="
                   ruaLocalDescanso.touched &&
                   ruaLocalDescanso.errors &&
@@ -567,7 +567,7 @@
                   )
                 " type="number" class="form-control" id="numeroLocalDescanso" formControlName="numeroLocalDescanso"
                 placeholder="nº" />
-              <label class="ml-3" class="ml-3" for="numeroLocalDescanso">Número</label>
+              <label class="ms-3" class="ms-3" for="numeroLocalDescanso">Número</label>
               <div *ngIf="
                   numeroLocalDescanso.touched &&
                   numeroLocalDescanso.errors &&
@@ -585,7 +585,7 @@
                   )
                 " type="text" class="form-control" formControlName="bairroLocalDescanso" id="bairroLocalDescanso"
                 placeholder="Informe o Bairro:" />
-              <label class="ml-3" class="ml-3" for="bairroLocalDescanso">Bairro</label>
+              <label class="ms-3" class="ms-3" for="bairroLocalDescanso">Bairro</label>
               <div *ngIf="
                   bairroLocalDescanso.touched &&
                   bairroLocalDescanso.errors &&
@@ -606,7 +606,7 @@
                   )
                 " type="text" class="form-control" id="cidadeLocalDescanso" formControlName="cidadeLocalDescanso"
                 placeholder="Informe a cidade:" />
-              <label class="ml-3" class="ml-3" for="cidadeLocalDescanso">Cidade</label>
+              <label class="ms-3" class="ms-3" for="cidadeLocalDescanso">Cidade</label>
               <div *ngIf="
                   cidadeLocalDescanso.touched &&
                   cidadeLocalDescanso.errors &&
@@ -620,7 +620,7 @@
             <div class="campo form-floating form-group col">
               <input type="text" class="form-control" id="complementoLocalDescanso"
                 formControlName="complementoLocalDescanso" placeholder="qualquer informações pertinente" />
-              <label class="ml-3" for="complementoLocalDescanso">Complemento</label>
+              <label class="ms-3" for="complementoLocalDescanso">Complemento</label>
             </div>
             <div class="campo form-floating col">
               <select [ngClass]="
@@ -657,7 +657,7 @@
                 <option value="SE">Sergipe</option>
                 <option value="TO">Tocantins</option>
               </select>
-              <label class="ml-3" for="ufLocalDescanso">Estado</label>
+              <label class="ms-3" for="ufLocalDescanso">Estado</label>
               <div *ngIf="
                   ufLocalDescanso.touched &&
                   ufLocalDescanso.errors &&
@@ -675,7 +675,7 @@
                   )
                 " type="cep" class="form-control" formControlName="CEPLocalDescanso" id="CEPLocalDescanso"
                 placeholder="Informe CEP do estabelecimento" mask="00000-000" />
-              <label class="ml-3" for="CEPLocalDescanso">CEP</label>
+              <label class="ms-3" for="CEPLocalDescanso">CEP</label>
               <div *ngIf="
                   CEPLocalDescanso.touched &&
                   CEPLocalDescanso.errors &&
@@ -693,7 +693,7 @@
       <fieldset class="mb-2" formGroupName="localDescanso">
         <div formGroupName="estaraDisponivel" class="mb-2 d-flex flex-column deletingMarginsFromMobile"
           [ngClass]="applyCssGroup('localDescanso.estaraDisponivel')">
-          <h5 class="mb-4 ml-4">Disponibilidade do local de descanso</h5>
+          <h5 class="mb-4 ms-4">Disponibilidade do local de descanso</h5>
           <div class="form-check form-switch">
             <input class="form-check-input px-3 py-2" type="checkbox" id="duranteTodoAno"
               formControlName="duranteTodoAno" />
@@ -781,7 +781,7 @@
                 <option value="10">Dez Meses</option>
                 <option value="11">Onze Meses</option>
               </select>
-              <label class="ml-3" for="mesesNaoDisponivel">Meses Disponível</label>
+              <label class="ms-3" for="mesesNaoDisponivel">Meses Disponível</label>
               <div *ngIf="mesesNaoDisponivel.touched && mesesNaoDisponivel.errors && !mesesNaoDisponivel.valid"
                 class="mt-1">
                 <small class="text-formInvalid" *ngIf="mesesNaoDisponivel.errors.required">
@@ -813,7 +813,7 @@
           <div class="form-floating campo form-group col">
             <input [ngClass]="applyCss('localDescanso.maximoDiariaPg')" type="number" class="form-control heightInput"
               id="maximoDiariaPg" formControlName="maximoDiariaPg" placeholder="nº" />
-            <label class="ml-3 labelText" for="maximoDiariaPg">Qual o máximo de diárias para cada agendamento?</label>
+            <label class="ms-3 labelText" for="maximoDiariaPg">Qual o máximo de diárias para cada agendamento?</label>
             <div *ngIf="
                 maximoDiariaPg.touched &&
                 maximoDiariaPg.errors &&
@@ -829,7 +829,7 @@
             <input [ngClass]="applyCss('localDescanso.maximoHospedesPorVez')" type="number"
               class="form-control heightInput" id="maximoHospedesPorVez" formControlName="maximoHospedesPorVez"
               placeholder="nº" />
-            <label class="ml-3 labelText" for="maximoHospedesPorVez">Qual o número máximo de hóspedes que o local pode
+            <label class="ms-3 labelText" for="maximoHospedesPorVez">Qual o número máximo de hóspedes que o local pode
               receber (de uma
               vez)?
             </label>
@@ -846,7 +846,7 @@
           <div class="form-floating campo form-group col">
             <input [ngClass]="applyCss('localDescanso.qtFamiliaMes')" type="number" class="form-control heightInput"
               id="qtFamiliaMes" formControlName="qtFamiliaMes" placeholder="nº" />
-            <label class="ml-3" for="qtFamiliaMes">Quantas famílias por mês poderão ser agendadas?
+            <label class="ms-3" for="qtFamiliaMes">Quantas famílias por mês poderão ser agendadas?
             </label>
             <div *ngIf="
                 qtFamiliaMes.touched &&
@@ -863,9 +863,9 @@
       </fieldset>
 
       <fieldset class="mb-2" formGroupName="localDescanso">
-        <h5 class="mb-4 ml-4">Custo de hospedagem e alimentação</h5>
+        <h5 class="mb-4 ms-4">Custo de hospedagem e alimentação</h5>
         <section class="row d-flex-wrap m-3 mb-4 align-items-center">
-          <p style="font-weight: 500; margin-left: 30px" class="mr-5">
+          <p style="font-weight: 500; margin-left: 30px" class="me-5">
             Haverá custo de hospedagem?
           </p>
           <div class="form-check form-switch col-auto">
@@ -893,7 +893,7 @@
             <div class="form-floating campo form-group col">
               <input [ngClass]="applyCss('localDescanso.valorHospedagem')" type="text" class="form-control heightInput"
                 id="valorHospedagem" formControlName="valorHospedagem" />
-              <label class="ml-3" for="valorHospedagem">Qual será o valor da Diária?
+              <label class="ms-3" for="valorHospedagem">Qual será o valor da Diária?
               </label>
               <div *ngIf="
                   valorHospedagem.touched &&
@@ -908,7 +908,7 @@
           </div>
         </section>
         <section class="row d-flex-wrap m-3 mb-4 align-items-center">
-          <p style="font-weight: 500; margin-left: 30px" class="mr-5">
+          <p style="font-weight: 500; margin-left: 30px" class="me-5">
             Haverá custo de alimentação?
           </p>
           <div class="form-check form-switch col-auto">
@@ -938,7 +938,7 @@
                   padding-top: 15px !important;
                   padding-bottom: 15px !important;
                 " />
-              <label class="ml-3 labelText" for="valorRefeicoes">Qual será o valor das refeições (café, almoço e
+              <label class="ms-3 labelText" for="valorRefeicoes">Qual será o valor das refeições (café, almoço e
                 jantar)?
               </label>
               <div *ngIf="
@@ -955,12 +955,12 @@
         </section>
       </fieldset>
       <fieldset class="mb-2" formGroupName="localDescanso">
-        <h5 class="mb-4 ml-4">Acomodações</h5>
+        <h5 class="mb-4 ms-4">Acomodações</h5>
         <div class="row d-flex-wrap m-3 mb-1">
           <div class="form-floating campo form-group col">
             <input [ngClass]="applyCss('localDescanso.qtQuartos')" type="number" class="form-control heightInput"
               id="qtQuartos" formControlName="qtQuartos" placeholder="nº" />
-            <label class="ml-3 labelText" for="qtQuartos">O local possui quantos quartos?
+            <label class="ms-3 labelText" for="qtQuartos">O local possui quantos quartos?
             </label>
             <div *ngIf="qtQuartos.touched && qtQuartos.errors && !qtQuartos.valid" class="mt-1">
               <small class="text-formInvalid" *ngIf="qtQuartos.errors.required">
@@ -972,7 +972,7 @@
           <div class="form-floating campo form-group col">
             <input [ngClass]="applyCss('localDescanso.qtSuites')" type="number" class="form-control heightInput"
               id="qtSuites" formControlName="qtSuites" placeholder="nº" />
-            <label class="ml-3 labelText" for="qtSuites">O local possui quantos suítes?
+            <label class="ms-3 labelText" for="qtSuites">O local possui quantos suítes?
             </label>
             <div *ngIf="qtSuites.touched && qtSuites.errors && !qtSuites.valid" class="mt-1">
               <small class="text-formInvalid" *ngIf="qtSuites.errors.required">
@@ -984,7 +984,7 @@
           <div class="form-floating campo form-group col">
             <input [ngClass]="applyCss('localDescanso.qtCamasCasal')" type="number" class="form-control heightInput"
               id="qtCamas" formControlName="qtCamasCasal" placeholder="nº" />
-            <label class="ml-3 labelText" for="qtCamasCasal">O local possui quantas camas de casal?
+            <label class="ms-3 labelText" for="qtCamasCasal">O local possui quantas camas de casal?
             </label>
             <div *ngIf="
                 qtCamasCasal.touched &&
@@ -1000,7 +1000,7 @@
           <div class="form-floating campo form-group col height-auto-responsive">
             <input [ngClass]="applyCss('localDescanso.qtCamasSolteiro')" type="number" class="form-control heightInput"
               id="qtCamasSolteiro" formControlName="qtCamasSolteiro" placeholder="nº" />
-            <label class="ml-3 labelText" for="qtCamasSolteiro">O local possui quantas camas de solteiro?
+            <label class="ms-3 labelText" for="qtCamasSolteiro">O local possui quantas camas de solteiro?
             </label>
             <div *ngIf="
                 qtCamasSolteiro.touched &&
@@ -1026,7 +1026,7 @@
           formGroupName="servicosDisponibilizados" class="col-12">
           <h5>O que o local de descanso disponibiliza?</h5>
           <section class="" formGroupName="quarto">
-            <p style="font-weight: 500; margin-left: 30px" class="mr-5">
+            <p style="font-weight: 500; margin-left: 30px" class="me-5">
               Quartos
             </p>
             <div class="row d-flex-wrap">
@@ -1060,7 +1060,7 @@
           </section>
 
           <section class="" formGroupName="cozinha">
-            <p style="font-weight: 500; margin-left: 30px" class="mr-5">
+            <p style="font-weight: 500; margin-left: 30px" class="me-5">
               Cozinha
             </p>
             <div class="row d-flex-wrap align-items-center">
@@ -1113,7 +1113,7 @@
           </section>
 
           <section class="" formGroupName="banheiros">
-            <p style="font-weight: 500; margin-left: 30px" class="mr-5">
+            <p style="font-weight: 500; margin-left: 30px" class="me-5">
               Banheiros
             </p>
             <div class="row d-flex-wrap">
@@ -1151,7 +1151,7 @@
           </section>
 
           <section class="" formGroupName="salaEstar">
-            <p style="font-weight: 500; margin-left: 30px" class="mr-5">
+            <p style="font-weight: 500; margin-left: 30px" class="me-5">
               Sala de Estar
             </p>
             <div class="row d-flex-wrap">
@@ -1189,7 +1189,7 @@
           </section>
 
           <section class="" formGroupName="areaExterna">
-            <p style="font-weight: 500; margin-left: 30px" class="mr-5">
+            <p style="font-weight: 500; margin-left: 30px" class="me-5">
               Área externa
             </p>
             <div class="row d-flex-wrap">

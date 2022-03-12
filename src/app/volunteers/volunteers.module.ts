@@ -23,6 +23,7 @@ import { HomePageVoluntaryComponent } from './home-page-voluntary/home-page-volu
   declarations: [ 
     HomePageVoluntaryComponent
   ],
+  exports:[RouterModule],
   providers: [VolunteersService],
 })
 export class VolunteersModule {}

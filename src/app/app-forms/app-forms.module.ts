@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormValidationControl } from './services/form-validation-control.service';
 import { AdminService } from '../services/admin.service';
+import { FormCadMissionariesResolverGuard } from '../shared/guards/form-cad-missionaries-resolver.guard';
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { AdminService } from '../services/admin.service';
     FormCadMissionariesComponent,
     FormCadAdminUsersComponent,
   ],
-  providers: [FormValidationControl, AdminService],
+  providers: [FormValidationControl, AdminService, FormCadMissionariesResolverGuard],
 
   exports: [FiltrosComponent, FormCadComponent],
 })
