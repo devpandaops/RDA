@@ -9,7 +9,7 @@
   <div *ngIf="User.typeUser === 'VOLUNTARY'" class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <p>Detalhes do Voluntário</p>
-      <button type="button" [ngClass]="{
+      <button *ngIf="loggeInUserType =='ADMINISTRATOR' " type="button" [ngClass]="{
             'btn-success': Voluntary.status == 'ATIVO',
             'btn-secondary': Voluntary.status != 'ATIVO'
           }" class="btn btn-primary btn-sm position-relative" (click)="updateStatusUserCTRL()">
@@ -219,11 +219,18 @@
             </div>
           </div>
         </div>
-        <div class="button mb-5 mt-5 d-flex justify-content-end">
+        <div *ngIf="loggeInUserType === 'ADMINISTRATOR'" class="button mb-5 mt-5 d-flex justify-content-end">
           <button type="submit" class="btn btn-success btn-lg"
             [routerLink]="['/sideBar/formCadVoluntary', Voluntary._id]">
             Atualizar
           </button>
+        </div>
+        <div *ngIf="loggeInUserType === 'VOLUNTARY'" class="button mb-5 mt-5 d-flex justify-content-end">
+          <button type="submit" class="btn btn-success btn-lg"
+            [routerLink]="['/header/formCadVoluntary', userLogado._id]">
+            Atualizar
+          </button>
+   
         </div>
         <footer class="blockquote-footer">
           <cite title="Título da fonte">Data de Cadastro:{{ Voluntary.dataCad }}
@@ -237,7 +244,7 @@
   <div *ngIf="User.typeUser === 'MISSIONARY'" class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <p>Detalhes do Voluntário</p>
-      <button type="button" [ngClass]="{
+      <button *ngIf="loggeInUserType =='ADMINISTRATOR'" type="button" [ngClass]="{
               'btn-success': Missionary.status == 'ATIVO',
               'btn-secondary': Missionary.status != 'ATIVO'
             }" class="btn btn-primary btn-sm position-relative" (click)="updateStatusUserCTRL()">
@@ -389,9 +396,13 @@
 
       
         </div>
-        <div class="button mb-5 mt-5 d-flex justify-content-end">
-          <button type="submit" class="btn btn-success btn-lg"
+        <div   class="button mb-5 mt-5 d-flex justify-content-end">
+          <button *ngIf="loggeInUserType === 'ADMINISTRATOR'" type="submit" class="btn btn-success btn-lg"
             [routerLink]="['/sideBar/formCadMissionaries',Missionary._id]">
+            Atualizar
+          </button>
+          <button *ngIf="loggeInUserType === 'MISSIONARY'" type="submit" class="btn btn-success btn-lg"
+            [routerLink]="['/header/formCadMissionaries',userLogado._id]">
             Atualizar
           </button>
         </div>

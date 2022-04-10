@@ -79,7 +79,6 @@ export class ListUsersComponent implements OnInit {
     public async queryByUserType(){
       switch (this.typeListUsers) {
         case 'ADMINISTRATOR':
-          console.log("cai aqui")
           this.administrators$ = this.adminService.getAdministrators();
         break;
           case 'VOLUNTARY':

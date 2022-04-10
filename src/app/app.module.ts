@@ -17,7 +17,7 @@ import { AppFormsModule } from './app-forms/app-forms.module';
 import { Erro404Component } from './shared/erro404/erro404.component';
 import { MainComponent } from './main/main.component';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
+// import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './login/login.component';
 
@@ -34,7 +34,7 @@ import { PublicPageModule } from './public-page/public-page.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    // HeaderComponent,
     FooterComponent,
     MainComponent,
     Erro404Component,

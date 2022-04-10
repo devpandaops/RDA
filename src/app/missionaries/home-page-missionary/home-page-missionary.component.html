@@ -1,1 +1,94 @@
-<p>home-page-missionary works!</p>
+<!-- <app-header [dataUser]="dataUser" [loggedinUserType]="loggedinUserType"></app-header> -->
+<!-- <h1>homeMissionary</h1> -->
+
+<main>
+    <div class="container py-4">
+ 
+      <div class="p-5 mb-4 bg-light border rounded-3">
+        <div class="container-fluid ">
+          <h1 class="display-5 fw-bold">Bem vindo</h1>
+          <p class="col-md-8 fs-4">Essa ferramenta foi criada peo Cuidado Integral do Missionário para te apoiar nas tarefas diárias, bem estar e ministério</p>
+          <button class="btn btn-outline-success btn-lg" type="button">Conheça o site do CIM</button>
+        </div>
+      </div>
+  
+      <div class="container px-4 " id="custom-cards">
+        <h2 class="pb-2 border-bottom">Conheça mais</h2>
+    
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g- py-2">
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-3 shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1520642413789-2bd6770d59e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGhlbHB8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Minha vida com Deus</h2>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                  </li>
+                  <li class="d-flex align-items-center me-3">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                    <small>Earth</small>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                    <small>3d</small>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-3 shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1604881991664-593b31b88488?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGhlbHB8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Orientação Espiritual</h2>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                  </li>
+                  <li class="d-flex align-items-center me-3">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                    <small>Pakistan</small>
+                  </li>
+                  <!-- <li class="d-flex align-items-center">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                    <small>4d</small>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-3 shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1581952976147-5a2d15560349?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGZhbWlseXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Mais tempo com minha Família</h2>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img src="./../../../assets/imagens/logos/JMN_CIM_LOGO_maos_branco.svg" alt="Bootstrap" width="35" height="35" class=" ">
+                  </li>
+                  <li class="d-flex align-items-center me-3">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                    <small>Mais tempo Com a Família</small>
+                  </li>
+                  <!-- <li class="d-flex align-items-center">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                    <small>5d</small>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container px-4 py-4" id="custom-cards">
+        <h2 class="pb-2 border-bottom">Lista de parceiros </h2>
+
+        <app-list-users [typeListUsers]="typeListUsers" [loggedinUserType]="loggedinUserType" ></app-list-users>
+
+    </div>
+  
+      <footer class="pt-3 mt-4 text-muted border-top">
+        &copy; 2021
+      </footer>
+    </div>
+  </main>

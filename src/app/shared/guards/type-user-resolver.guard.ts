@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/login/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AllUsersResolverGuard implements Resolve<String> {
+export class TypeUserResolverGuard implements Resolve<String> {
   constructor(
 
     private authService: AuthService,

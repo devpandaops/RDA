@@ -13,8 +13,10 @@ import { FiltrosComponent } from '../app-forms/volunteersForm/filtros/filtros.co
 import { FormCadComponent } from '../app-forms/volunteersForm/form-cad/form-cad.component';
 import { FormCadVolunteersResolverGuard } from './guards/form-cad-volunteers-resolver.guard';
 import { MyPageAllUsersComponent } from './myPageAllUsers/myPageAllUsers.component';
-import { AllUsersResolverGuard } from './guards/all-users-resolver.guard';
 import { MyPageAllUsersResolverGuard } from './guards/my-page-all-users-resolver.guard';
+import { TypeUserResolverGuard } from './guards/type-user-resolver.guard';
+import { HeaderResolverGuard } from './guards/header-resolver.guard';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [];
 
@@ -22,6 +24,27 @@ const routes: Routes = [];
   imports: [
     RouterModule.forChild([
       { path: '', redirectTo: 'LoginUser', pathMatch: 'full' },
+      {
+        path: 'header',
+        component: HeaderComponent,
+         canActivate: [AuthGuard],
+         resolve: {
+          user: HeaderResolverGuard,
+
+        },
+        children: [
+          {
+            path: 'myPageAllUsers/:id/:userTypeInList',
+            component: MyPageAllUsersComponent,
+            resolve: {
+              loggeInUserType: TypeUserResolverGuard,
+              loggeInUser: HeaderResolverGuard,
+              userTypeInList: MyPageAllUsersResolverGuard,
+            },
+            canActivate: [AuthGuard],
+          },
+        ]
+      },
       {
         path: 'sideBar',
         component: SideBarComponent,
@@ -31,8 +54,8 @@ const routes: Routes = [];
             path: 'myPageAllUsers/:id/:userTypeInList',
             component: MyPageAllUsersComponent,
             resolve: {
-              loggeInUserType: AllUsersResolverGuard,
-              user: AllUsersResolverGuard,
+              loggeInUserType: TypeUserResolverGuard,
+              loggeInUser: HeaderResolverGuard,
               userTypeInList: MyPageAllUsersResolverGuard,
             },
             canActivate: [AuthGuard],

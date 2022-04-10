@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/sideBar/Dashboard']);
           break;
         case 'MISSIONARY':
-          this.router.navigate([`homeMissionary/${payload.sub}`]);
+          this.router.navigate([`/header/homeMissionary/${payload.sub}/`]);
           break;
         case 'VOLUNTARY':
-          this.router.navigate([`homeVoluntary/${payload.sub}`]);
+          this.router.navigate([`/header/homeVoluntary/${payload.sub}`]);
           break;
 
         default:

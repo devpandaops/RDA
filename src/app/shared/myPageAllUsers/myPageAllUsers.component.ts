@@ -35,6 +35,7 @@ export class MyPageAllUsersComponent implements OnInit {
   slides = [];
   style: any;
   loggeInUserType: string;
+  userLogado: any;
   constructor(
     private alertService: AlertService,
     private voluntaryService: VolunteersService,
@@ -44,7 +45,12 @@ export class MyPageAllUsersComponent implements OnInit {
     
     ngOnInit(): void {
       this.loggeInUserType = this.route.snapshot.data['loggeInUserType']
+      // console.log("loggeInUserType", this.loggeInUserType)
       this.User = this.route.snapshot.data['userTypeInList'];
+      // console.log("User", this.User)
+      this.userLogado = this.route.snapshot.data.loggeInUser
+        
+
       
 
       if(this.User.typeUser === "VOLUNTARY"){
